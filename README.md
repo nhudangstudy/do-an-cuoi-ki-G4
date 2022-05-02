@@ -8,6 +8,7 @@
 *	Add/Remove/Edit Products
 *	Track Inventory
 *	Check and review Sales data
+*	Check Accounts data
 
 #### For Transactional Users
 *	Make Invoice
