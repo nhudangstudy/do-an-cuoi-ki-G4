@@ -1,5 +1,5 @@
 from tkinter import *
-# import tkinter as tk
+import tkinter as tk
 
 class Sign_up_View:
 
@@ -8,6 +8,7 @@ class Sign_up_View:
         self.window.geometry("1080x720+80+20")
         self.window.title("Signup Page")
         self.window.configure(bg = "#f6efff")
+        self.window.iconphoto(False, PhotoImage(file = f"./Images/SignUp/AppIcon.png"))
 
         self.canvas = Canvas(self, bg = "#f6efff", height = 768, width = 1366, bd = 0, highlightthickness = 0, relief = "ridge")
         self.canvas.place(x = 0, y = 0)
