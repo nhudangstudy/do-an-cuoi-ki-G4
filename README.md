@@ -8,6 +8,7 @@
 *	Add/Remove/Edit Products
 *	Track Inventory
 *	Check and review Sales data
+*	Check Accounts data
 
 #### For Transactional Users
 *	Make Invoice
@@ -21,7 +22,7 @@ python -v 3
 
 # Setup 
 ```
-pip install -r requirements.txt
+python set_up.py
 ```
 
 # Execution

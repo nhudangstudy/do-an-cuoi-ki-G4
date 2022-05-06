@@ -1,0 +1,26 @@
+[
+    {
+        "Product_id": "P001",
+        "Product_name": "COOKIES",
+        "Description": "COOKIES",
+        "Category": "Category 1",
+        "Price": 100.00,
+        "Stock": 100
+    },
+    {
+        "Product_id": "P002",
+        "Product_name": "CROISSANT",
+        "Description": "CROISSANT",
+        "Category": "Category 2",
+        "Price": 200.00,
+        "Stock": 100
+    },
+    {
+        "Product_id": "P003",
+        "Product_name": "CHOCOLATE",
+        "Description": "BLACK CHOCOLATE",
+        "Category": "Category 3",
+        "Price": 300.00,
+        "Stock": 100
+    }
+]
