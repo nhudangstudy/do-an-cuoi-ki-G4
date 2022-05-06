@@ -26,7 +26,7 @@ subprocess.call(["pip", "install", "-r", "requirements.txt"])
 
 #prepare for database 
 load_dotenv(find_dotenv())
-host = os.getenv("HOST")
+host = os.getenv("HOSTNAME")
 client = MongoClient(host)
 #check there was database named G4KTLT in client
 if "G4KTLT" in client.list_database_names():
