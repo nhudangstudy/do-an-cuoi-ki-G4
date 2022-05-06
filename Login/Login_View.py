@@ -6,7 +6,7 @@ class Login_View:
 
     def __init__(self):
         self.window = Tk()
-        self.window.geometry("1080x720")
+        self.window.geometry("1080x720+210+50")
         self.window.configure(bg="#ffffff")
 
         self.canvas = Canvas(self.window, bg="#ffffff", height=720, width=1080,

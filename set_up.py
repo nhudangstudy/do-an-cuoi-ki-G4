@@ -1,8 +1,5 @@
 import subprocess 
 import os 
-from dotenv import load_dotenv, find_dotenv  
-from pymongo import MongoClient 
-import ctypes
 
 
 #check pip is exits 
@@ -23,6 +20,10 @@ except:
 
 #install requirements 
 subprocess.call(["pip", "install", "-r", "requirements.txt"])
+
+from dotenv import load_dotenv, find_dotenv  
+from pymongo import MongoClient 
+import ctypes
 
 #prepare for database 
 load_dotenv(find_dotenv())
