@@ -9,7 +9,7 @@ class Api:
     #connect to mongodb 
     def connector(self):
         load_dotenv(find_dotenv())
-        host = os.getenv("HOST")
+        host = os.getenv("HOSTNAME")
         client = MongoClient(host)
         db = client['G4KTLT']
         self.collection = db['users']   
