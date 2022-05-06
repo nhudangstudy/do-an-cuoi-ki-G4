@@ -1,5 +1,6 @@
 from tkinter import *
 import tkinter as tk
+import Login.Login_Process as lgp
 
 class Login_View:
 
@@ -18,12 +19,12 @@ class Login_View:
 
         self.login_image = PhotoImage(file=f"./Images/Login/login_image.png")
         self.login_button = Button(image=self.login_image, borderwidth=0,
-                                   highlightthickness=0, relief="flat", bg="#ffffff")
+                                   highlightthickness=0, relief="flat", bg="#ffffff", command=lambda: lgp.Login_Process.confirm_button_handle(self))
         self.login_button.place(x=215, y=553, width=150, height=50)
 
         self.signup_image = PhotoImage(file=f"./Images/Login/signup_image.png")
         self.signup_button = Button(image=self.signup_image, borderwidth=0,
-                                    highlightthickness=0, relief="flat", bg="#5D5FEF")
+                                    highlightthickness=0, relief="flat", bg="#5D5FEF", command=lambda: lgp.Login_Process.signup_button_handle(self))
         self.signup_button.place(x=765, y=430, width=150, height=50)
 
         self.entry_img = PhotoImage(file=f"./Images/Login/img_textBox0.png")
