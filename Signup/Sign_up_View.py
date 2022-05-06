@@ -29,10 +29,10 @@ class Sign_up_View:
         self.entry_bg3 = self.canvas.create_image(797, 236, image=self.entry_image)
 
         self.username_entry = Entry(self.window, bd = 0, bg = "#E3CEFF", highlightthickness = 0)
-        self.username_entry.place(x = 605, y = 468, height = 38, width = 382)
+        self.username_entry.place(x = 605, y = 214, height = 38, width = 382)
 
-        self.password_entry = Entry(self.window, bd = 0, bg = "#E3CEFF", highlightthickness = 0)
+        self.password_entry = Entry(self.window,show="*", bd = 0, bg = "#E3CEFF", highlightthickness = 0)
         self.password_entry.place(x = 605, y = 341, height = 38, width = 382)
 
-        self.reenterpass_entry = Entry(self.window, bd = 0, bg = "#E3CEFF", highlightthickness = 0)
-        self.reenterpass_entry.place(x = 605, y = 214, height = 38, width = 382)
+        self.reenterpass_entry = Entry(self.window,show="*", bd = 0, bg = "#E3CEFF", highlightthickness = 0)
+        self.reenterpass_entry.place(x = 605, y = 468, height = 38, width = 382)
