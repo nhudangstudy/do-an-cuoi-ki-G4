@@ -18,7 +18,7 @@ class Sign_up_Process:
         reenterpassword = obj.reenterpass_entry.get()
         api = Signup_Api.Signup_Api()
         error = api.check_user_signup(username,password,reenterpassword)
-        
+
         if error == -1:
             mbox.showerror('Warning','Invalid User Input')
             obj.username_entry.delete(0,END)
@@ -36,9 +36,18 @@ class Sign_up_Process:
             obj.username_entry.delete(0,END)
             obj.password_entry.delete(0,END)
             obj.reenterpass_entry.delete(0,END)
+<<<<<<< HEAD
 
         else:
             mbox.showinfo('Success','Account created successfully')
             obj.username_entry.delete(0,END)
             obj.password_entry.delete(0,END)
             obj.reenterpass_entry.delete(0,END)
+=======
+            
+        else:
+            mbox.showinfo('Success','Account created successfully')
+            obj.username_entry.delete(0,END)
+            obj.password_entry.delete(0,END)
+            obj.reenterpass_entry.delete(0,END)
+>>>>>>> dfaf7d1e6a0dd1490e891b084599a70d0440f849
