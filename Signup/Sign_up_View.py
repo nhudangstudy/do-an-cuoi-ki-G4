@@ -17,22 +17,22 @@ class Sign_up_View:
 
         self.signup_image = PhotoImage(file = f"./Images/SignUp/Button_Signup.png")
         self.signup_button = Button(self.window, image = self.signup_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#E3CEFF")
-        self.signup_button.place(x=723, y=553, width=149, height=40)
+        self.signup_button.place(x=730, y=545, width=150, height=40)
 
         self.signin_image = PhotoImage(file = f"./Images/SignUp/Button_Signin.png")
         self.signin_button = Button(self.window, image = self.signin_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#E3CEFF")
-        self.signin_button.place(x=723, y=615, width=149, height=40)
+        self.signin_button.place(x=730, y=605, width=150, height=40)
 
         self.entry_image = PhotoImage(file = f"./Images/SignUp/Textbox.png")
-        self.entry_bg1 = self.canvas.create_image(797, 490, image=self.entry_image)
-        self.entry_bg2 = self.canvas.create_image(797, 363, image=self.entry_image)
-        self.entry_bg3 = self.canvas.create_image(797, 236, image=self.entry_image)
+        self.entry_bg1 = self.canvas.create_image(805, 485, image=self.entry_image)
+        self.entry_bg2 = self.canvas.create_image(805, 360, image=self.entry_image)
+        self.entry_bg3 = self.canvas.create_image(805, 235, image=self.entry_image)
 
         self.username_entry = Entry(self.window, bd = 0, bg = "#E3CEFF", highlightthickness = 0)
-        self.username_entry.place(x = 605, y = 214, height = 38, width = 382)
+        self.username_entry.place(x = 610, y = 210, height = 35, width = 390)
 
         self.password_entry = Entry(self.window,show="*", bd = 0, bg = "#E3CEFF", highlightthickness = 0)
-        self.password_entry.place(x = 605, y = 341, height = 38, width = 382)
+        self.password_entry.place(x = 610, y = 335, height = 35, width = 390)
 
         self.reenterpass_entry = Entry(self.window,show="*", bd = 0, bg = "#E3CEFF", highlightthickness = 0)
-        self.reenterpass_entry.place(x = 605, y = 468, height = 38, width = 382)
+        self.reenterpass_entry.place(x = 610, y = 460, height = 35, width = 390)
