@@ -37,6 +37,5 @@ class Login_View:
         self.password_entry = Entry(self.window,show="*", bd=0, bg="#c4c4c4", highlightthickness=0)
         self.password_entry.place(x=165.0, y=465, width=250.0, height=48)
 
-
 # app = Login_View()
 # app.window.mainloop()
