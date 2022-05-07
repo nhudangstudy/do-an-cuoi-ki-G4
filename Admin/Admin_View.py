@@ -1,7 +1,7 @@
 from tkinter import *
 
 
-class Admin_View():
+class Admin_View:
 
     def __init__(self):
         self.window = Tk()
