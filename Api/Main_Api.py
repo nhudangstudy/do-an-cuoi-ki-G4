@@ -10,6 +10,9 @@ class Api:
     def connector(self):
         load_dotenv(find_dotenv())
         host = os.getenv("HOSTNAME")
-        client = MongoClient(host)
-        db = client['G4KTLT']
-        self.collection = db['users']   
+        self.client = MongoClient(host)
+        self.db = self.client['G4KTLT']
+        self.users_collection = self.db['users']   
+        self.warehouse_collection = self.db['warehouse'] 
+        self.invoices_collection = self.db['invoices']
+        
