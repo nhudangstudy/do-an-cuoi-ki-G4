@@ -5,7 +5,17 @@ class Sign_up_View:
 
     def __init__(self):
         self.window = Tk() 
-        self.window.geometry("1080x720+210+50")
+        # get screen width and height
+        self.screen_width = self.window.winfo_screenwidth()
+        self.screen_height = self.window.winfo_screenheight()
+
+        # set window width and height
+        self.window_width = 1080
+        self.window_height = 720
+        # set window position
+        self.window.geometry("%dx%d+%d+%d" % (self.window_width, self.window_height,
+                             (self.screen_width - self.window_width) / 2, (self.screen_height - self.window_height) / 2))
+                             
         self.window.title("Signup Page")
         self.window.configure(bg = "#f6efff")
         self.window.iconphoto(False, PhotoImage(file = f"./Images/SignUp/AppIcon.png"))

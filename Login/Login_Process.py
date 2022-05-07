@@ -2,6 +2,7 @@ import Api.Login_Api as Login_Api
 from tkinter import messagebox
 import Signup.Sign_up_View as suv
 from tkinter import * 
+import Admin.Admin_View as av 
 
 class Login_Process:
     @staticmethod
@@ -26,6 +27,10 @@ class Login_Process:
         else:
             if c == "Admin":
                 messagebox.showinfo("MB", "Welcome Admin")
+                obj.window.destroy() 
+                app = av.Admin_View() 
+                app.window.mainloop()
+                
             if c == "User":
                 messagebox.showinfo("MB", "Welcome User")
 
