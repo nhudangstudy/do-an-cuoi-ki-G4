@@ -1,3 +1,4 @@
+import Login.Login_Process as loginprocess
 from tkinter import *
 
 class Sign_up_View:
@@ -16,11 +17,11 @@ class Sign_up_View:
         self.background = self.canvas.create_image(540, 360, image=self.background_img)
 
         self.signup_image = PhotoImage(file = f"./Images/SignUp/Button_Signup.png")
-        self.signup_button = Button(self.window, image = self.signup_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#E3CEFF")
+        self.signup_button = Button(self.window, image = self.signup_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#E3CEFF",command = lambda: loginprocess.Login_Process.signup_button_handle(self))
         self.signup_button.place(x=730, y=545, width=150, height=40)
 
         self.signin_image = PhotoImage(file = f"./Images/SignUp/Button_Signin.png")
-        self.signin_button = Button(self.window, image = self.signin_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#E3CEFF")
+        self.signin_button = Button(self.window, image = self.signin_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#E3CEFF",command = lambda: loginprocess.Login_Process.confirm_button_handle(self))
         self.signin_button.place(x=730, y=605, width=150, height=40)
 
         self.entry_image = PhotoImage(file = f"./Images/SignUp/Textbox.png")
