@@ -1,8 +1,8 @@
-import Api.Api as Api
+import Api.Login_Api as Login_Api
 
 
 class Sign_up_Process: 
-    api = Api.Api()
+    api = Login_Api.Api()
     
     @staticmethod
     def login_button_handle():
