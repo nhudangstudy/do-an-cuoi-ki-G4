@@ -14,9 +14,5 @@ class Signup_Api(main_api.Api):
         user = self.users_collection.find_one({'username': username})
         if user != None: 
             return -3 #error 3: username is already exist 
-<<<<<<< HEAD
-        self.collection.insert_one({'username': username, 'password': password, 'roles': "User"})
-=======
         self.users_collection.insert_one({'username': username, 'password': password, 'roles': "User"})
->>>>>>> dfaf7d1e6a0dd1490e891b084599a70d0440f849
-        return 0 #success   
+        return 0 #success
