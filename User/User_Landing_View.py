@@ -1,5 +1,5 @@
 from tkinter import *
-
+import User.User_Landing_Process as up
 class User_View:
 
     def __init__(self):
@@ -28,7 +28,7 @@ class User_View:
         self.background = self.canvas.create_image(540, 360, image=self.background_img)
         
         self.logout_image = PhotoImage(file = f"./Images/User/Button_Logout.png")
-        self.logout_button = Button(self.window, image = self.logout_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#F9B1CD")
+        self.logout_button = Button(self.window, image = self.logout_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#F9B1CD", command= lambda: up.User_process.log_out_button_handle(self)) 
         self.logout_button.place(x=940, y=15, width=125, height=45)
 
         self.items_image = PhotoImage(file = f"./Images/User/Button_Items.png")
