@@ -1,5 +1,5 @@
 from tkinter import *
-import Admin.Admin_Landing_Process as ap 
+import Modules.Admin.Admin_Landing_Process as ap 
 
 class Admin_View:
 

@@ -1,9 +1,9 @@
 import Api.Login_Api as Login_Api
 from tkinter import messagebox
-import Signup.Sign_up_View as suv
+import Modules.Signup.Sign_up_View as suv
 from tkinter import * 
-import Admin.Admin_landing_View as av 
-import User.User_Landing_View as uv
+import Modules.Admin.Admin_landing_View as av 
+import Modules.User.User_Landing_View as uv
 
 
 class Login_Process:

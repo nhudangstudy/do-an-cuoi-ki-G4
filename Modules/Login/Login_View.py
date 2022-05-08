@@ -1,6 +1,6 @@
 from tkinter import *
 import tkinter as tk
-import Login.Login_Process as lgp
+import Modules.Login.Login_Process as lgp
 
 class Login_View:
 

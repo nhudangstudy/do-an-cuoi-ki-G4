@@ -1,4 +1,4 @@
-import Signup.Sign_up_Process as signup_process
+import Modules.Signup.Sign_up_Process as signup_process
 from tkinter import *
 
 class Sign_up_View:
