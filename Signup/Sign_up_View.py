@@ -5,6 +5,7 @@ class Sign_up_View:
 
     def __init__(self):
         self.window = Tk() 
+
         # get screen width and height
         self.screen_width = self.window.winfo_screenwidth()
         self.screen_height = self.window.winfo_screenheight()
@@ -12,6 +13,7 @@ class Sign_up_View:
         # set window width and height
         self.window_width = 1080
         self.window_height = 720
+        
         # set window position
         self.window.geometry("%dx%d+%d+%d" % (self.window_width, self.window_height,
                              (self.screen_width - self.window_width) / 2, (self.screen_height - self.window_height) / 2))
@@ -36,11 +38,11 @@ class Sign_up_View:
         self.reenterpass_entry.place(x = 610, y = 460, height = 35, width = 390)
 
         self.signup_image = PhotoImage(file = f"./Images/SignUp/Button_Signup.png")
-        self.signup_button = Button(self.window, image = self.signup_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#E3CEFF",command = lambda: signup_process.Sign_up_Process.signup_button_handle(self))
+        self.signup_button = Button(self.window, image = self.signup_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#FAEDF6",command = lambda: signup_process.Sign_up_Process.signup_button_handle(self))
         self.signup_button.place(x=730, y=545, width=150, height=40)
 
         self.signin_image = PhotoImage(file = f"./Images/SignUp/Button_Signin.png")
-        self.signin_button = Button(self.window, image = self.signin_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#E3CEFF",command = lambda: signup_process.Sign_up_Process.login_button_handle(self))
+        self.signin_button = Button(self.window, image = self.signin_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#F3D2E8",command = lambda: signup_process.Sign_up_Process.login_button_handle(self))
         self.signin_button.place(x=730, y=605, width=150, height=40)
 
         self.entry_image = PhotoImage(file = f"./Images/SignUp/Textbox.png")
