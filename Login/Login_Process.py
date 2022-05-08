@@ -2,7 +2,9 @@ import Api.Login_Api as Login_Api
 from tkinter import messagebox
 import Signup.Sign_up_View as suv
 from tkinter import * 
-import Admin.Admin_View as av 
+import Admin.Admin_landing_View as av 
+import User.User_Landing_View as uv
+
 
 class Login_Process:
     @staticmethod
@@ -33,6 +35,9 @@ class Login_Process:
                 
             if c == "User":
                 messagebox.showinfo("MB", "Welcome User")
+                obj.window.destroy() 
+                app = uv.User_View() 
+                app.window.mainloop()
 
     @staticmethod 
     def signup_button_handle(obj):

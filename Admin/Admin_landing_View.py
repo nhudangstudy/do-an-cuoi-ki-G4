@@ -1,5 +1,5 @@
 from tkinter import *
-
+import Admin.Admin_Landing_Process as ap 
 
 class Admin_View:
 
@@ -43,7 +43,7 @@ class Admin_View:
         # -----button-log-out-----
         self.img_log_out = PhotoImage(file=f"./Images/Admin/img_log_out.png")
         self.button_log_out = Button(image=self.img_log_out, borderwidth=0,
-                                     highlightthickness=0, relief="flat", bg="#ffffff")
+                                     highlightthickness=0, relief="flat", bg="#ffffff", command=lambda: ap.Admin_Process.log_out_button_handle(self))
 
         self.button_log_out.place(x=800, y=60, width=210, height=60)
 
