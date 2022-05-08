@@ -1,5 +1,5 @@
 from tkinter import *
-import Login.Login_View as lgv
+import Modules.Login.Login_View as lgv
 # import User.Items_View as uiv
 # import User.Shopnow_View as usv
 
