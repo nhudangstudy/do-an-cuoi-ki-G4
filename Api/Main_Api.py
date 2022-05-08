@@ -39,4 +39,11 @@ class Api:
                 sub_invoice_data["Price"] = item["Price"]
                 invoices_data.append(sub_invoice_data)
         return invoices_data 
-        
+
+    #get all description data in warehouse    
+    def get_all_description_data(self): 
+        warehouse = self.warehouse_collection.find()
+        description_data = [] 
+        for item in warehouse: 
+            description_data.append(item["Description"]) 
+        return description_data 
