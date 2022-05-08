@@ -84,10 +84,6 @@ class Admin_Api(main_api.Api):
         self.users_collection.delete_one({'_id': _id})
         print("Deleted successfully")
         return 0  # success
-
-    def get_all_invoices_data(self): 
-        invoices = self.invoices_collection.find() 
-        invoices_data = [] 
-        for invoice in invoices: 
-            invoices_data.append(invoice) 
-        return invoices_data 
+    
+    # get all warehouse data by function get_all_warehouse_data
+    # get all invoice data by function get_all_invoice_data
