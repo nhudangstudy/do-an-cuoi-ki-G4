@@ -32,11 +32,11 @@ class User_View:
         self.logout_button.place(x=940, y=15, width=125, height=45)
 
         self.items_image = PhotoImage(file = f"./Images/User/Button_Items.png")
-        self.items_button = Button(self.window, image = self.items_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#49CFFC")
+        self.items_button = Button(self.window, image = self.items_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#49CFFC", command=lambda: up.User_process.items_button_handle(self))
         self.items_button.place(x=335, y=585, width=160, height=55)
 
         self.shopnow_image = PhotoImage(file = f"./Images/User/Button_Shopnow.png")
-        self.shopnow_button = Button(self.window, image = self.shopnow_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#C6B0D7")
+        self.shopnow_button = Button(self.window, image = self.shopnow_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#C6B0D7", command=lambda: up.User_process.shopnow_button_handle(self))
         self.shopnow_button.place(x=580, y=585, width=160, height=55)
 
 
