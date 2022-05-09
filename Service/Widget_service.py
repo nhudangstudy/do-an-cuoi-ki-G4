@@ -1,92 +1,95 @@
-from enum import auto
-from tkinter import * 
-import re 
-import Api.Main_Api as main_api
+import tkinter
+tkinter_umlauts = ['odiaeresis', 'adiaeresis', 'udiaeresis',
+                   'Odiaeresis', 'Adiaeresis', 'Udiaeresis', 'ssharp']
 
-class AutofillEntry(Entry): #input window field, autocompletelist, width, height 
-    def __init__(self,autocompleteList, *args, **kwargs): 
 
-        def matches(fieldValue, acListEntry):
-            pattern = re.compile('.*' + re.escape(fieldValue) + '.*', re.IGNORECASE)
-            return re.match(pattern, acListEntry)
-        api =  main_api.Api()
+class myentry(tkinter.Entry):
+    def set_completion_list(self, completion_list):
+        self._completion_list = sorted(completion_list, key=str.lower)
+        self._hits = []
+        self._hit_index = 0
+        self.position = 0
+        self.bind('<KeyRelease>', self.handle_keyrelease)
 
-        Entry.__init__(self, *args, **kwargs)
-        self.focus()
-        self.autocompleteList = autocompleteList
-        self.matchesFunction = matches
-        self.var = self["textvariable"]
-        if self.var == '':
-            self.var = self["textvariable"] = StringVar()
-
-        self.var.trace('w', self.changed)
-        self.bind("<Right>" , self.selection)
-        self.bind("<Return>", self.selection)
-        self.bind("<Up>", self.moveUp)
-        self.bind("<Down>", self.moveDown)
-        
-        self.listboxUp = False
-
-    def changed(self, name, index, mode):
-        if self.var.get() == '':
-            if self.listboxUp:
-                self.listbox.destroy()
-                self.listboxUp = False
+    def autocomplete(self, delta=0):
+        if delta:
+            self.delete(self.position, tkinter.END)
         else:
-            words = self.comparison()
-            if words:
-                if not self.listboxUp:
-                    self.listbox = Listbox(width=self["width"], height=self["height"])
-                    self.listbox.bind("<Button-1>", self.selection)
-                    self.listbox.bind("<Right>", self.selection)
-                    self.listbox.bind("<Return>", self.selection)
-                    self.listbox.place(x=self.winfo_x(), y=self.winfo_y() + self.winfo_height())
-                    self.listboxUp = True
-                
-                self.listbox.delete(0, END)
-                for w in words:
-                    self.listbox.insert(END,w)
-            else:
-                if self.listboxUp:
-                    self.listbox.destroy()
-                    self.listboxUp = False
-        
-    def selection(self, event):
-        if self.listboxUp:
-            self.var.set(self.listbox.get(ACTIVE))
-            self.listbox.destroy()
-            self.listboxUp = False
-            self.icursor(END)
+            self.position = len(self.get())
+        _hits = []
+        for element in self._completion_list:
+            if element.lower().startswith(self.get().lower()):
+                _hits.append(element)
+        if _hits != self._hits:
+            self._hit_index = 0
+            self._hits = _hits
+        if _hits == self._hits and self._hits:
+            self._hit_index = (self._hit_index + delta) % len(self._hits)
+        if self._hits:
+            self.delete(0, tkinter.END)
+            self.insert(0, self._hits[self._hit_index])
+            self.select_range(self.position, tkinter.END)
 
-    def moveUp(self, event):
-        if self.listboxUp:
-            if self.listbox.curselection() == ():
-                index = '0'
+    def handle_keyrelease(self, event):
+        if event.keysym == "BackSpace":
+            self.delete(self.index(tkinter.INSERT), tkinter.END)
+            self.position = self.index(tkinter.END)
+        if event.keysym == "Left":
+            if self.position < self.index(tkinter.END):
+                self.delete(self.position, tkinter.END)
             else:
-                index = self.listbox.curselection()[0]
-                
-            if index != '0':                
-                self.listbox.selection_clear(first=index)
-                index = str(int(index) - 1)
-                
-                self.listbox.see(index) # Scroll!
-                self.listbox.selection_set(first=index)
-                self.listbox.activate(index)
+                self.position = self.position-1
+                self.delete(self.position, tkinter.END)
+        if event.keysym == "Right":
+            self.position = self.index(tkinter.END)
+        if event.keysym == "Down":
+            self.autocomplete(1)
+        if event.keysym == "Up":
+            self.autocomplete(-1)
+        if len(event.keysym) == 1 or event.keysym in tkinter_umlauts:
+            self.autocomplete()
 
-    def moveDown(self, event):
-        if self.listboxUp:
-            if self.listbox.curselection() == ():
-                index = '0'
+
+class mycombobox(tkinter.ttk.Combobox):
+
+    def set_completion_list(self, completion_list):
+        self._completion_list = sorted(completion_list, key=str.lower)
+        self._hits = []
+        self._hit_index = 0
+        self.position = 0
+        self.bind('<KeyRelease>', self.handle_keyrelease)
+        self['values'] = self._completion_list
+
+    def autocomplete(self, delta=0):
+        if delta:
+            self.delete(self.position, tkinter.END)
+        else:
+            self.position = len(self.get())
+        _hits = []
+        for element in self._completion_list:
+            if element.lower().startswith(self.get().lower()):  # Match case insensitively
+                _hits.append(element)
+        if _hits != self._hits:
+            self._hit_index = 0
+            self._hits = _hits
+        if _hits == self._hits and self._hits:
+            self._hit_index = (self._hit_index + delta) % len(self._hits)
+        if self._hits:
+            self.delete(0, tkinter.END)
+            self.insert(0, self._hits[self._hit_index])
+            self.select_range(self.position, tkinter.END)
+
+    def handle_keyrelease(self, event):
+        if event.keysym == "BackSpace":
+            self.delete(self.index(tkinter.INSERT), tkinter.END)
+            self.position = self.index(tkinter.END)
+        if event.keysym == "Left":
+            if self.position < self.index(tkinter.END):
+                self.delete(self.position, tkinter.END)
             else:
-                index = self.listbox.curselection()[0]
-                
-            if index != END:                        
-                self.listbox.selection_clear(first=index)
-                index = str(int(index) + 1)
-                
-                self.listbox.see(index) # Scroll!
-                self.listbox.selection_set(first=index)
-                self.listbox.activate(index) 
-
-    def comparison(self):
-        return [ w for w in self.autocompleteList if self.matchesFunction(self.var.get(), w) ]
+                self.position = self.position-1
+                self.delete(self.position, tkinter.END)
+        if event.keysym == "Right":
+            self.position = self.index(tkinter.END)
+        if len(event.keysym) == 1:
+            self.autocomplete()
