@@ -28,15 +28,15 @@ class User_Landing_View:
         self.background = self.canvas.create_image(540, 360, image=self.background_img)
         
         self.logout_image = PhotoImage(file = f"./Images/User/LandingPage/Button_Logout.png")
-        self.logout_button = Button(self.window, image = self.logout_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#F9B1CD", command= lambda: up.User_process.log_out_button_handle(self)) 
-        self.logout_button.place(x=940, y=15, width=125, height=45)
+        self.logout_button = Button(self.window, image = self.logout_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#F9B1CD", command= lambda: up.User_Landing_process.log_out_button_handle(self)) 
+        self.logout_button.place(x=935, y=10, width=130, height=55)
 
         self.items_image = PhotoImage(file = f"./Images/User/LandingPage/Button_Items.png")
-        self.items_button = Button(self.window, image = self.items_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#49CFFC", command=lambda: up.User_process.items_button_handle(self))
+        self.items_button = Button(self.window, image = self.items_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#49CFFC", command=lambda: up.User_Landing_process.items_button_handle(self))
         self.items_button.place(x=335, y=585, width=160, height=55)
 
         self.shopnow_image = PhotoImage(file = f"./Images/User/LandingPage/Button_Shopnow.png")
-        self.shopnow_button = Button(self.window, image = self.shopnow_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#C6B0D7", command=lambda: up.User_process.shopnow_button_handle(self))
+        self.shopnow_button = Button(self.window, image = self.shopnow_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#C6B0D7", command=lambda: up.User_Landing_process.shopnow_button_handle(self))
         self.shopnow_button.place(x=580, y=585, width=160, height=55)
 
 
