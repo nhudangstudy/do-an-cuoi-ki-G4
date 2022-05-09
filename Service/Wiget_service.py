@@ -1,9 +1,10 @@
+from enum import auto
 from tkinter import * 
 import re 
 import Api.Main_Api as main_api
 
-class AutofillEntry(Entry): #input window field width, height 
-    def __init__(self, *args, **kwargs): 
+class AutofillEntry(Entry): #input window field, autocompletelist, width, height 
+    def __init__(self,autocompleteList, *args, **kwargs): 
 
         def matches(fieldValue, acListEntry):
             pattern = re.compile('.*' + re.escape(fieldValue) + '.*', re.IGNORECASE)
@@ -12,7 +13,7 @@ class AutofillEntry(Entry): #input window field width, height
 
         Entry.__init__(self, *args, **kwargs)
         self.focus()
-        self.autocompleteList = api.get_all_description_data()     
+        self.autocompleteList = autocompleteList
         self.matchesFunction = matches
         self.var = self["textvariable"]
         if self.var == '':
