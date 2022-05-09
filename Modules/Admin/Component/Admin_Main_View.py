@@ -28,48 +28,48 @@ class Admin_Main_View:
 
         # -----background-----
         self.img_background = PhotoImage(file = f"./Images/Admin/MainPage/background.png")
-        self.img_background = self.canvas.create_image(540.0, 66.5,image=self.img_background)
+        self.background = self.canvas.create_image(540,65,image = self.img_background)
+        
 
         #-----button-products-----
         self.img_products = PhotoImage(file = f"./Images/Admin/MainPage/img_products.png")
         self.button_products = Button(image = self.img_products,borderwidth = 0,
                                       highlightthickness = 0,relief = "flat", bg="#ffffff")
 
-        self.button_products.place(x = 29, y = 163,width = 150,height = 50)
+        self.button_products.place(x = 30, y = 160,width = 150,height = 50)
 
         #-----button-inventory-----
         self.img_inventory = PhotoImage(file = f"./Images/Admin/MainPage/img_inventory.png")
         self.button_inventory = Button(image = self.img_inventory,borderwidth = 0,
                                        highlightthickness = 0,relief = "flat", bg="#ffffff")
 
-        self.button_inventory.place(x = 205, y = 163,width = 150,height = 50)
+        self.button_inventory.place(x = 200, y = 160,width = 150,height = 50)
 
         #-----button-sales-----
         self.img_sales = PhotoImage(file = f"./Images/Admin/MainPage/img_sales.png")
         self.button_sales = Button(image = self.img_sales,borderwidth = 0,
                                    highlightthickness = 0,relief = "flat", bg="#ffffff")
 
-        self.button_sales.place(x = 381, y = 163,width = 150,height = 50)
+        self.button_sales.place(x = 380, y = 160,width = 150,height = 50)
 
         #-----button-users-----
         self.img_users = PhotoImage(file = f"./Images/Admin/MainPage/img_users.png")
-        self.button_sales = Button(image = self.img_sales,borderwidth = 0,
+        self.button_users = Button(image = self.img_users,borderwidth = 0,
                                    highlightthickness = 0,relief = "flat", bg="#ffffff")
 
-        self.button_sales.place(x = 557, y = 162,width = 150,height = 50)
+        self.button_users.place(x = 550, y = 160,width = 150,height = 50)
 
         #-----button-switch-account-----
         self.img_switch = PhotoImage(file = f"./Images/Admin/MainPage/img_switch.png")
         self.button_switch = Button(image = self.img_switch,borderwidth = 0,
                                     highlightthickness = 0,relief = "flat", bg="#ffffff")
 
-        self.button_switch.place(x = 733, y = 162,width = 150,height = 50)
+        self.button_switch.place(x = 730, y = 160,width = 150,height = 50)
 
         #-----button-exit-----
         self.img_exit = PhotoImage(file = f"./Images/Admin/MainPage/img_exit.png")
         self.button_exit = Button(image = self.img_exit,borderwidth = 0,
                                   highlightthickness = 0,relief = "flat", bg="#ffffff")
 
-        self.button_exit.place(x = 909, y = 162,width = 150,height = 50)
-
+        self.button_exit.place(x = 900, y = 160,width = 150,height = 50)
 
