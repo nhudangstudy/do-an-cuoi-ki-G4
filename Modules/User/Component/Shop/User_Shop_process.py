@@ -2,6 +2,12 @@ from tkinter import *
 from tkinter import ttk
 import Api.User_Api as Api
 from tkinter import messagebox 
+<<<<<<< HEAD
+=======
+import Service.Widget_service as ws
+
+
+>>>>>>> feature/User_Landing_View_v2
 class User_Shop_process: 
     @staticmethod 
     def generate_shop_table(obj): 
@@ -53,6 +59,13 @@ class User_Shop_process:
 
         obj.product_name_label = Label(obj.formframe, text = "Product_name:", font = ("Arial", 12, "bold"), bg = "#ffffff") 
         obj.product_name_label.place(x = 10, y = 50, width = 150, height = 30)
+<<<<<<< HEAD
+=======
+
+
+        list = Api.User_Api.get_product_name()     
+        obj.product_name_entry = ws.AutofillEntry()
+>>>>>>> feature/User_Landing_View_v2
         obj.product_name_entry = Entry(obj.formframe, textvariable = obj.product_name, font = ("Arial", 12), state=DISABLED, width=150)
         obj.product_name_entry.place(x = 160, y = 50, width = 300, height = 30)
 
@@ -79,6 +92,10 @@ class User_Shop_process:
         obj.quantity_label.place(x = 120, y = 50, width = 100, height = 30)
 
         #create search entry 
+<<<<<<< HEAD
+=======
+        AutofillEntry
+>>>>>>> feature/User_Landing_View_v2
         obj.search_entry = Entry(obj.buttonframe, font = ("Arial", 12), width=20) 
         obj.search_entry.place(x = 240, y = 10, width = 200, height = 30) 
         #create quantity entry 
