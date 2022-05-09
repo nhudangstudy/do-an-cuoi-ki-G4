@@ -1,8 +1,5 @@
 import subprocess 
 import os 
-from dotenv import load_dotenv, find_dotenv  
-from pymongo import MongoClient 
-import ctypes
 
 
 #check pip is exits 
@@ -24,9 +21,13 @@ except:
 #install requirements 
 subprocess.call(["pip", "install", "-r", "requirements.txt"])
 
+from dotenv import load_dotenv, find_dotenv  
+from pymongo import MongoClient 
+import ctypes
+
 #prepare for database 
 load_dotenv(find_dotenv())
-host = os.getenv("HOST")
+host = os.getenv("HOSTNAME")
 client = MongoClient(host)
 #check there was database named G4KTLT in client
 if "G4KTLT" in client.list_database_names():
