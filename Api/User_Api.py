@@ -1,12 +1,15 @@
+from tkinter import messagebox
 import Api.Main_Api as main_api 
 import json
 import datetime 
+
 class User_Api(main_api.Api): 
+    total_cart = []
+    temp = 0
     def __init__(self): 
         super().__init__() 
         self.connector() 
-        self.total_cart = []
-    
+       
     # get last Invoice_Id from invoice collection 
     def get_last_invoice_id(self): 
         self.cursor = self.invoices_collection.find().sort([('Invoice_Id', -1)]) 
@@ -25,48 +28,71 @@ class User_Api(main_api.Api):
         return 0 #success
     
     def add_item_to_cart(self, product_name, quantity):
-        self.cursor = self.warehouse_collection.find({'Product_Name': product_name})
-        if self.cursor == None: 
+        data = self.warehouse_collection.find_one({'Product_name': product_name})
+        if data == None: 
             return -1 #error 1: product is not exist 
         else: 
-            self.product = self.cursor[0] 
-            self.product_id = self.product['Product_Id'] 
-            self.product_name = self.product['Product_Name']
-            self.product_price = self.product['Product_Price'] 
-            self.left_stock = self.product['Stock_Stock']
-
-            if self.left_stock < quantity: 
-                return -1 #error 1: not enough stock 
+            product_id =data['Product_id'] 
+            product_name =data['Product_name']
+            product_price = data['Price'] 
+            left_stock =data['Stock']
+        try: 
+            int(quantity)
+            if int(left_stock) < int(quantity): 
+                return -2 #error 2: not enough stock 
             else:
-                self.left_stock = self.left_stock - quantity 
+                left_stock = int(left_stock) - int(quantity)
+        except: 
+            return -3 #error 3: error quantities
+        #check product_id is in User_Api.total_cart
+        if len(User_Api.total_cart) != 0:
+            for i in range(len(User_Api.total_cart)):
+                if User_Api.total_cart[i]['Product_id'] == product_id:
+                    User_Api.total_cart[i]['Quantity'] = int(User_Api.total_cart[i]['Quantity']) + int(quantity)
+                    User_Api.total_cart[i]['Price'] = int(User_Api.total_cart[i]['Price']) + int(quantity) * int(product_price)
+                    if int(left_stock) < User_Api.total_cart[i]['Quantity']: 
+                        return -2 #error 2: not enough stock 
+                    else:
+                        left_stock = int(left_stock) - int(quantity) 
+                    User_Api.temp = User_Api.total_cart[i]['Price']
+                    return -4 #error 4: product already in cart 
 
-            #create cart.json file in Data folder
             self.cart = {}
-            self.cart['Product_Id'] = self.product_id 
-            self.cart['Product_Name'] = self.product_name
+            self.cart['Product_id'] = product_id 
+            self.cart['Product_name'] = product_name
             self.cart['Quantity'] = quantity
-            self.cart['Price'] = self.product_price * quantity
- 
-            #add cart to cart.json in Data folder 
-            self.total_cart.append(self.cart)
+            self.cart['Price'] = int(product_price) * int(quantity)
+            User_Api.total_cart.append(self.cart)
 
-            return 0 #success 
+            return self.cart
+
+        else:   
+            self.cart = {}
+            self.cart['Product_id'] = product_id 
+            self.cart['Product_name'] = product_name
+            self.cart['Quantity'] = quantity
+            self.cart['Price'] = int(product_price) * int(quantity)
+
+            #add cart to cart.json in Data folder 
+            User_Api.total_cart.append(self.cart)
+
+            return self.cart
 
     #process 
     def process_cart(self): 
         self.create_new_invoice_id() 
         self.create_new_invoice({'Invoice_Id': self.new_invoice_id, 'InvoiceDate': datetime.datetime.now(), 'Total_Price': 0})
-        for cart in self.total_cart: 
+        for cart in User_Api.total_cart: 
             self.total_price = self.total_price + cart['Price'] 
         
         final = {}
         final['Invoice_Id'] = self.new_invoice_id 
         final['InvoiceDate'] = datetime.datetime.now()
-        final['Cart'] = self.total_cart
+        final['Cart'] = User_Api.total_cart
         final['TotalAmount'] = self.total_price
 
         self.create_new_invoice(final) 
-        self.total_cart = []
+        User_Api.total_cart = []
         return 0 #success
 
 

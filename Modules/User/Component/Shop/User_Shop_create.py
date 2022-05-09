@@ -1,4 +1,5 @@
 from tkinter import * 
+import Modules.User.Component.Shop.User_Shop_process as usp
 
 class User_Shop_create:
     @staticmethod 
@@ -21,5 +22,10 @@ class User_Shop_create:
         obj.allframes.append(obj.formframe)
         obj.allframes.append(obj.buttonframe) 
 
-
+        #create table 
+        usp.User_Shop_process.generate_shop_table(obj) 
+        #create form 
+        usp.User_Shop_process.generate_shop_form(obj) 
+        #create buttons 
+        usp.User_Shop_process.generate_shop_buttons(obj) 
 
