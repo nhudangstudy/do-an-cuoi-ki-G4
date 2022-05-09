@@ -12,7 +12,8 @@ class Admin_Api(main_api.Api):
         # get product id in json_data
         product_id = json_data["Product_id"]
         # get product quantity in json_data
-        product = self.warehouse_collection.find_one({'Product_id': product_id})
+        product = self.warehouse_collection.find_one(
+            {'Product_id': product_id})
         if product == None:
             # check Product_name of json_data is in collection
             S = 0
@@ -39,7 +40,8 @@ class Admin_Api(main_api.Api):
 
         product_id = json_data["Product_id"]
         # get product quantity in json_data
-        product = self.warehouse_collection.find_one({'Product_id': product_id})
+        product = self.warehouse_collection.find_one(
+            {'Product_id': product_id})
         _id = product['_id']  # get _id of product
         S = 0
         for key, value in json_data.items():
@@ -53,14 +55,16 @@ class Admin_Api(main_api.Api):
             return -2  # erorr 2 : product id is not in collection but all informations are in collection
         else:
             # update json_data to _id in  database
-            self.warehouse_collection.update_one({'_id': _id}, {'$set': json_data})
+            self.warehouse_collection.update_one(
+                {'_id': _id}, {'$set': json_data})
             print("Updated successfully")
             return 0  # success
 
     def remove_items(self, json_data):
         product_id = json_data["Product_id"]
         # get product quantity in json_data
-        product = self.warehouse_collection.find_one({'Product_id': product_id})
+        product = self.warehouse_collection.find_one(
+            {'Product_id': product_id})
         _id = product['_id']  # get _id of product
         self.warehouse_collection.delete_one({'_id': _id})
         print("Deleted successfully")
@@ -84,6 +88,6 @@ class Admin_Api(main_api.Api):
         self.users_collection.delete_one({'_id': _id})
         print("Deleted successfully")
         return 0  # success
-    
+
     # get all warehouse data by function get_all_warehouse_data
     # get all invoice data by function get_all_invoice_data
