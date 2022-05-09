@@ -36,7 +36,7 @@ class Login_Process:
             if c == "User":
                 messagebox.showinfo("MB", "Welcome User")
                 obj.window.destroy() 
-                app = uv.User_View() 
+                app = uv.User_Landing_View()
                 app.window.mainloop()
 
     @staticmethod 
