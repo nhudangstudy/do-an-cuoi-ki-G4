@@ -2,6 +2,7 @@ from tkinter import *
 import tkinter as tk
 import Modules.Login.Login_Process as lgp
 
+
 class Login_View:
 
     def __init__(self):
@@ -37,13 +38,17 @@ class Login_View:
         self.signup_button.place(x=765, y=430, width=150, height=50)
 
         self.entry_img = PhotoImage(file=f"./Images/Login/img_textBox0.png")
-        self.entry_bg1 = self.canvas.create_image(290.0, 490.0, image=self.entry_img)
-        self.entry_bg2 = self.canvas.create_image(290.0, 390.0, image=self.entry_img)
+        self.entry_bg1 = self.canvas.create_image(
+            290.0, 490.0, image=self.entry_img)
+        self.entry_bg2 = self.canvas.create_image(
+            290.0, 390.0, image=self.entry_img)
 
-        self.name_entry = Entry(self.window,bd=0, bg="#c4c4c4", highlightthickness=0)
+        self.name_entry = Entry(
+            self.window, bd=0, bg="#c4c4c4", highlightthickness=0)
         self.name_entry.place(x=165.0, y=365, width=250.0, height=48)
 
-        self.password_entry = Entry(self.window,show="*", bd=0, bg="#c4c4c4", highlightthickness=0)
+        self.password_entry = Entry(
+            self.window, show="*", bd=0, bg="#c4c4c4", highlightthickness=0)
         self.password_entry.place(x=165.0, y=465, width=250.0, height=48)
 
 # app = Login_View()

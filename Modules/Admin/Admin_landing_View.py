@@ -1,5 +1,6 @@
 from tkinter import *
-import Modules.Admin.Admin_Landing_Process as ap 
+import Modules.Admin.Admin_Landing_Process as ap
+
 
 class Admin_View:
 
@@ -16,7 +17,7 @@ class Admin_View:
         # set window position
         self.window.geometry("%dx%d+%d+%d" % (self.window_width, self.window_height,
                              (self.screen_width - self.window_width) / 2, (self.screen_height - self.window_height) / 2))
-                             
+
         self.window.configure(bg="#ffffff")
         self.window.title('Admin Landing Page')
 
@@ -43,7 +44,7 @@ class Admin_View:
         # -----button-log-out-----
         self.img_log_out = PhotoImage(file=f"./Images/Admin/LandingPage/img_log_out.png")
         self.button_log_out = Button(image=self.img_log_out, borderwidth=0,
-                                     highlightthickness=0, relief="flat", bg="#ffffff", 
+                                     highlightthickness=0, relief="flat", bg="#ffffff",
                                      command=lambda: ap.Admin_Process.log_out_button_handle(self))
 
         self.button_log_out.place(x=800, y=60, width=210, height=60)
@@ -58,6 +59,7 @@ class Admin_View:
 
         # -----button-inventory-----
         self.img_inventory = PhotoImage(file=f"./Images/Admin/LandingPage/img_inventory.png")
+
         self.button_inventory = Button(image=self.img_inventory, borderwidth=0,
                                        highlightthickness=0, relief="flat", bg="#ffffff",
                                        command=lambda: ap.Admin_Process.inventory_button_handle(self))
