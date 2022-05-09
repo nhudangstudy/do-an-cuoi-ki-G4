@@ -36,7 +36,7 @@ class User_Landing_View:
         self.items_button.place(x=335, y=585, width=160, height=55)
 
         self.shopnow_image = PhotoImage(file = f"./Images/User/LandingPage/Button_Shopnow.png")
-        self.shopnow_button = Button(self.window, image = self.shopnow_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#C6B0D7", command=lambda: up.User_Landing_process.shopnow_button_handle(self))
+        self.shopnow_button = Button(self.window, image = self.shopnow_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#C6B0D7", command=lambda: up.User_Landing_process.shop_button_handle(self))
         self.shopnow_button.place(x=580, y=585, width=160, height=55)
 
 
