@@ -22,6 +22,8 @@ class Admin_Main_View:
         self.window.configure(bg = "#ffffff")
         self.window.title('Admin Main Page')
 
+        self.allframes = []
+
         self.canvas = Canvas(self.window,bg = "#ffffff",height = 720,width = 1080,
                              bd = 0,highlightthickness = 0,relief = "ridge")
         self.canvas.place(x = 0, y = 0)
