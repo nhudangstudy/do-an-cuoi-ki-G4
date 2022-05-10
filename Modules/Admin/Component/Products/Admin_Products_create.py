@@ -19,6 +19,8 @@ class Admin_Products_create:
 
         obj.allframes.append(obj.formframe)
         obj.allframes.append(obj.buttonframe)
+        Admin_Products_create.generate_products_form(obj)
+        Admin_Products_create.generate_products_button(obj)
 
     @staticmethod
     def generate_products_form(obj):
