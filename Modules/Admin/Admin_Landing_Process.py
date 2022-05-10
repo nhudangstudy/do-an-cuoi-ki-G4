@@ -1,9 +1,6 @@
 from tkinter import *
 import Modules.Login.Login_View as lgv
-# import Modules.Admin.Products_View as productsview
-# import Modules.Admin.Inventory_View as inventoryview
-# import Modules.Admin.Sales_View as salesview
-# import Modules.Admin.User_View as userview
+import Modules.Admin.Component.Admin_Main_View as amv
 
 
 class Admin_Process:
@@ -13,17 +10,20 @@ class Admin_Process:
         app = lgv.Login_View()
         app.window.mainloop()
 
-    # @staticmethod
-    # def products_button_handle(obj):
-    #     obj.window.destroy()
-    #     app = productsview.Products_View()
-    #     app.window.mainloop()
+    @staticmethod
+    def products_button_handle(obj):
+        obj.window.destroy()
+        app = amv.Admin_Main_View()
+        app.click_button('products') 
+        app.window.mainloop()
 
-    # @staticmethod
-    # def inventory_button_handle(obj):
-    #     obj.window.destroy()
-    #     app = inventoryview.Inventory_View()
-    #     app.window.mainloop()
+    @staticmethod
+    def inventory_button_handle(obj):
+        obj.window.destroy()
+        app = amv.Admin_Main_View()
+        app.click_button('inventory') 
+        app.window.mainloop()
+    
 
     # @staticmethod
     # def sales_button_handle(obj):

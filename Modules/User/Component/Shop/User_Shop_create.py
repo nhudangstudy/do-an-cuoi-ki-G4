@@ -127,7 +127,6 @@ class User_Shop_create:
         # create search entry
         list = api.get_all_product_name()
         obj.searchvar = StringVar()
-
         obj.search_entry = ws.myentry(
             obj.buttonframe, textvariable=obj.searchvar, width=20)
         obj.search_entry.set_completion_list(list)
