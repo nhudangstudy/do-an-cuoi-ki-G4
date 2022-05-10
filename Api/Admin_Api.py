@@ -1,5 +1,5 @@
 import json
-import Main_Api as main_api
+import Api.Main_Api as main_api
 from bson.objectid import ObjectId
 
 
@@ -88,6 +88,19 @@ class Admin_Api(main_api.Api):
         self.users_collection.delete_one({'_id': _id})
         print("Deleted successfully")
         return 0  # success
+
+    def add_new_user(self, json_data): 
+        # get user in json_data 
+        user = self.users_container.find_one({'username': json_data["username"]})
+        if user == None: 
+            #add to database 
+            self.users_collection.insert_one(json_data) 
+            print("Inserted successfully")
+            return 0  # success
+        else: 
+            print("user is already exist")
+            return -1  # error 1: user is already exist
+
 
     # get all warehouse data by function get_all_warehouse_data
     # get all invoice data by function get_all_invoice_data

@@ -69,13 +69,13 @@ class Admin_View:
         # -----button-sales-----
         self.img_sales = PhotoImage(file=f"./Images/Admin/LandingPage/img_sales.png")
         self.button_sales = Button(image=self.img_sales, borderwidth=0, highlightthickness=0,
-                                   relief="flat", bg="#ffffff")
+                                   relief="flat", bg="#ffffff", command=lambda: ap.Admin_Process.sales_button_handle(self))
 
         self.button_sales.place(x=389, y=582, width=170, height=55)
 
         # -----button-users-----
         self.img_users = PhotoImage(file=f"./Images/Admin/LandingPage/img_users.png")
         self.button_users = Button(image=self.img_users, borderwidth=0, highlightthickness=0,
-                                   relief="flat", bg="#ffffff")
+                                   relief="flat", bg="#ffffff", command=lambda: ap.Admin_Process.users_button_handle(self))
 
         self.button_users.place(x=559, y=582, width=170, height=55)
