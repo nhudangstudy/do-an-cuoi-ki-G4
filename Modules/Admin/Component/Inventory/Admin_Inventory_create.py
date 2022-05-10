@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter import ttk
+import Api.Admin_Api as Api
+import Service.Widget_service as ws
 
 class Admin_Inventory_create:
 
@@ -27,6 +29,7 @@ class Admin_Inventory_create:
         obj.allframes.append(obj.formframe)
         obj.allframes.append(obj.tableframe)
         obj.allframes.append(obj.buttonframe)
+        obj.allframes.append(obj.searchframe)
         Admin_Inventory_create.generate_inventory_form(obj)
         Admin_Inventory_create.generate_inventory_button(obj)
         Admin_Inventory_create.generate_inventory_table(obj)
@@ -83,16 +86,24 @@ class Admin_Inventory_create:
 
     @staticmethod
     def generate_inventory_search(obj):
+        api = Api.Admin_Api() 
+        data = api.get_all_warehouse_data()
+        #get all Product name in data 
+        product_name = [] 
+        for i in data: 
+            product_name.append(i['Product_name'])
+
         # create entry in search frame
-        obj.search_entry = Entry(obj.searchframe, font=('Arial', 12), width=20)
+        obj.search_entry = ws.myentry(obj.searchframe, font=('Arial', 12), width=20)
         obj.search_entry.place(x=15, y=5, width=335, height=35)
+        obj.search_entry.set_completion_list(product_name)
 
         #create button in search frame
         obj.search_button = Button(obj.searchframe, text="Search",font=('Arial', 12, 'bold'), bg='#ccccfe')
-        obj.search_button.place(x=367, y=6,width=80, height=25)
+        obj.search_button.place(x=360, y=6,width=80, height=25)
 
-        obj.reset_button = Label(obj.searchframe, text='Search', font=('Arial', 12, 'bold'), bg='#ccccfe')
-        obj.reset_button.place(x=488, y=6, width=80, height=25)
+        obj.reset_button = Button(obj.searchframe, text='Reset', font=('Arial', 12, 'bold'), bg='#ccccfe')
+        obj.reset_button.place(x=480, y=6, width=80, height=25)
 
     @staticmethod
     def generate_inventory_table(obj):
@@ -102,31 +113,33 @@ class Admin_Inventory_create:
             cur = obj.tree.item(cur)
             try:
                 obj.selected_product = cur['values']
-                obj.product_name.set(cur['values'][0])
-                obj.description.set(cur['values'][1])
-                obj.category.set(cur['values'][2])
-                obj.price.set(cur['values'][3])
-                obj.current_stock.set(cur['values'][4])
-                obj.add_stock.set(cur['values'][5])
+                obj.product_name.set(cur['values'][1])
+                obj.description.set(cur['values'][2])
+                obj.category.set(cur['values'][3])
+                obj.price.set(cur['values'][4])
+                obj.current_stock.set(cur['values'][5])
+
             except:
                 pass
 
         # create tree view
         obj.tree = ttk.Treeview(obj.tableframe, columns=('ID', 'Name', 'Description',
                                                          'Category', 'Price', 'Stocks'))
-        obj.tree.heading('#0', text="ID")
-        obj.tree.heading('#1', text='Name')
-        obj.tree.heading('#2', text='Description')
-        obj.tree.heading('#3', text='Category')
-        obj.tree.heading('#4', text='Price')
-        obj.tree.heading('#5', text='Stocks')
+        obj.tree.heading('#0')
+        obj.tree.heading('#1', text ='ID') 
+        obj.tree.heading('#2', text='Name')
+        obj.tree.heading('#3', text='Description')
+        obj.tree.heading('#4', text='Category')
+        obj.tree.heading('#5', text='Price')
+        obj.tree.heading('#6', text='Stocks')
 
-        obj.tree.column('#0', width=40)
-        obj.tree.column('#1', width=105)
-        obj.tree.column('#2', width=165)
-        obj.tree.column('#3', width=110)
+        obj.tree.column('#0', width=0)
+        obj.tree.column('#1', width=40)
+        obj.tree.column('#2', width=100)
+        obj.tree.column('#3', width=170)
         obj.tree.column('#4', width=110)
-        obj.tree.column('#5', width=75)
+        obj.tree.column('#5', width=110)
+        obj.tree.column('#6', width=70)
         obj.tree.bind("<<TreeviewSelect>>", clickprodtable)
         obj.tree.grid(row=1, column=0, columnspan=6)
 
@@ -134,4 +147,9 @@ class Admin_Inventory_create:
         obj.scrollbary = ttk.Scrollbar(obj.tableframe, orient=VERTICAL, command=obj.tree.yview)
         obj.scrollbary.grid(row=1, column=6)
 
+        api = Api.Admin_Api()
+        products = api.get_all_warehouse_data()
+
+        for product in products: 
+            obj.tree.insert('', 'end', values=(product['Product_id'], product['Product_name'], product['Description'], product['Category'], product['Price'], product['Stock']))
 

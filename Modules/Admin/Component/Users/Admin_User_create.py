@@ -1,7 +1,7 @@
 from tkinter import * 
 from tkinter import ttk 
 import Api.Admin_Api as Api 
-
+import Service.Widget_service as ws 
 class Admin_User_create: 
     @staticmethod 
     def generate_users(obj): 
@@ -79,7 +79,10 @@ class Admin_User_create:
 
         obj.label_role = Label(obj.formframe, text="Role", bg="pink") 
         obj.label_role.place(x=0, y=140, width=100, height=50)
-        obj.entry_role = Entry(obj.formframe, textvariable=obj.user_role) 
+        
+        
+        obj.entry_role = ws.mycombobox(obj.formframe, textvariable=obj.user_role) 
+        obj.entry_role.set_completion_list(["Admin", "User"])
         obj.entry_role.place(x=100, y=140, width=300, height=50)
          
          #create update button 
@@ -116,7 +119,8 @@ class Admin_User_create:
         label_role = Label(window, text="Role", bg="pink")
         label_role.place(x=0, y=140, width=100, height=50)
         # create entry
-        entry_role = Entry(window)
+        entry_role = ws.mycombobox(window)
+        entry_role.set_completion_list(["Admin", "User"])
         entry_role.place(x=100, y=140, width=200, height=50)
 
         # create create button 
