@@ -33,8 +33,8 @@ class Login_View:
         self.login_button.place(x = 190, y = 485, width = 135, height = 45)
 
         self.signup_image = PhotoImage(file = f"./Images/Login/Button_Signup.png")
-        self.signup_button = Button(image=self.signup_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#CDC2FA", command=lambda: lgp.Login_Process.signup_button_handle(self))
-        self.signup_button.place(x = 765, y = 430, width = 145, height = 50)
+        self.signup_button = Button(image=self.signup_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#B6B3FB", command=lambda: lgp.Login_Process.signup_button_handle(self))
+        self.signup_button.place(x = 765, y = 430, width = 135, height = 50)
 
         self.entry_img = PhotoImage(file = f"./Images/Login/Textbox.png")
         self.entry_bg1 = self.canvas.create_image(260, 315, image = self.entry_img)
