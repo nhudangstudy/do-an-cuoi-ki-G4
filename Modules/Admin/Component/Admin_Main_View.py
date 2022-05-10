@@ -25,7 +25,9 @@ class Admin_Main_View:
 
 
         self.window.configure(bg = "#ffffff")
-        self.window.title('Admin Main Page')
+        self.window.title('Admin')
+        self.window.iconphoto(False, PhotoImage(
+            file=f"./Images/User/MainPage/UserIcon.png"))
 
         self.allframes = []
 
