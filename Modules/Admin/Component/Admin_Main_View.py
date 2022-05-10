@@ -1,7 +1,10 @@
-from re import A
 from tkinter import *
+from tkinter import messagebox
 import Modules.Admin.Component.Products.Admin_Products_create as apc
 import Modules.Admin.Component.Inventory.Admin_Inventory_create as aic
+import Modules.Admin.Component.Sales.Admin_Sales_create as asc 
+import Modules.Admin.Component.Users.Admin_User_create as auc 
+import Modules.Login.Login_View as lgv
 
 class Admin_Main_View:
     def __init__(self):
@@ -52,28 +55,28 @@ class Admin_Main_View:
         #-----button-sales-----
         self.img_sales = PhotoImage(file = f"./Images/Admin/MainPage/img_sales.png")
         self.button_sales = Button(image = self.img_sales,borderwidth = 0,
-                                   highlightthickness = 0,relief = "flat", bg="#ffffff")
+                                   highlightthickness = 0,relief = "flat", bg="#ffffff", command = lambda: self.click_button("sales"))
 
         self.button_sales.place(x = 380, y = 160,width = 150,height = 50)
 
         #-----button-users-----
         self.img_users = PhotoImage(file = f"./Images/Admin/MainPage/img_users.png")
         self.button_users = Button(image = self.img_users,borderwidth = 0,
-                                   highlightthickness = 0,relief = "flat", bg="#ffffff")
+                                   highlightthickness = 0,relief = "flat", bg="#ffffff", command = lambda: self.click_button("users"))
 
         self.button_users.place(x = 550, y = 160,width = 150,height = 50)
 
         #-----button-switch-account-----
         self.img_switch = PhotoImage(file = f"./Images/Admin/MainPage/img_switch.png")
         self.button_switch = Button(image = self.img_switch,borderwidth = 0,
-                                    highlightthickness = 0,relief = "flat", bg="#ffffff")
+                                    highlightthickness = 0,relief = "flat", bg="#ffffff", command = lambda: self.switch_account())
 
         self.button_switch.place(x = 730, y = 160,width = 150,height = 50)
 
         #-----button-exit-----
         self.img_exit = PhotoImage(file = f"./Images/Admin/MainPage/img_exit.png")
         self.button_exit = Button(image = self.img_exit,borderwidth = 0,
-                                  highlightthickness = 0,relief = "flat", bg="#ffffff")
+                                  highlightthickness = 0,relief = "flat", bg="#ffffff", command = lambda: self.exit_button())
 
         self.button_exit.place(x = 900, y = 160,width = 150,height = 50)
 
@@ -83,6 +86,21 @@ class Admin_Main_View:
         elif button == "inventory":
             aic.Admin_Inventory_create.generate_inventory(self)
         elif button == "sales": 
-            pass 
+            asc.Admin_Sales_create.generate_sales(self) 
         elif button == "users":
-            pass
+            auc.Admin_User_create.generate_users(self) 
+
+    def exit_button(self): 
+            if messagebox.askyesno("Quit", "Are you sure you want to quit?"): 
+                self.window.destroy() 
+                exit() 
+            else: 
+                return
+        
+    def switch_account(self): 
+        if messagebox.askyesno("Change Account", "Are you sure you want to change account?"): 
+            self.window.destroy() 
+            app = lgv.Login_View()
+            app.window.mainloop() 
+        else:
+            return 
