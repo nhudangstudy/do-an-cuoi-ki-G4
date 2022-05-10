@@ -16,9 +16,12 @@ class Admin_Products_create:
 
         obj.buttonframe = Frame(obj.window, bg="#ffffff")
         obj.buttonframe.place(x=315, y=630, width=450, height=65)
-
         obj.allframes.append(obj.formframe)
         obj.allframes.append(obj.buttonframe)
+
+        #Generate product button and product form 
+        Admin_Products_create.generate_products_button(obj)
+        Admin_Products_create.generate_products_form(obj)
 
     @staticmethod
     def generate_products_form(obj):

@@ -27,7 +27,11 @@ class Admin_Inventory_create:
         obj.allframes.append(obj.formframe)
         obj.allframes.append(obj.tableframe)
         obj.allframes.append(obj.buttonframe)
-
+        Admin_Inventory_create.generate_inventory_form(obj)
+        Admin_Inventory_create.generate_inventory_button(obj)
+        Admin_Inventory_create.generate_inventory_table(obj)
+        Admin_Inventory_create.generate_inventory_search(obj) 
+        
     @staticmethod
     def generate_inventory_form(obj):
         # create form in form frame
