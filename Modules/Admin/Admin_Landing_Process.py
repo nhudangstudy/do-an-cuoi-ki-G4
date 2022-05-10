@@ -13,20 +13,16 @@ class Admin_Process:
     @staticmethod
     def products_button_handle(obj):
         obj.window.destroy()
-
         app = amv.Admin_Main_View()
-        app.click_button("products")
+        app.click_button('products') 
         app.window.mainloop()
-        # app.click_button("products")
 
     @staticmethod
     def inventory_button_handle(obj):
         obj.window.destroy()
         app = amv.Admin_Main_View()
-        app.click_button("inventory")
+        app.click_button('inventory') 
         app.window.mainloop()
-        # app.click_button("inventory")
-
 
     # @staticmethod
     # def sales_button_handle(obj):

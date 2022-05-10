@@ -1,8 +1,8 @@
 from re import A
 from tkinter import *
-import Modules.Admin.Admin_Landing_Process as alp
-import Modules.Admin.Component.Inventory.Admin_Inventory_create as aic 
 import Modules.Admin.Component.Products.Admin_Products_create as apc
+import Modules.Admin.Component.Inventory.Admin_Inventory_create as aic
+
 class Admin_Main_View:
     def __init__(self):
 
@@ -45,7 +45,7 @@ class Admin_Main_View:
         #-----button-inventory-----
         self.img_inventory = PhotoImage(file = f"./Images/Admin/MainPage/img_inventory.png")
         self.button_inventory = Button(image = self.img_inventory,borderwidth = 0,
-                                       highlightthickness = 0,relief = "flat", bg="#ffffff", command = lambda: self.click_button("inventory"))
+                                       highlightthickness = 0,relief = "flat", bg="#ffffff", command= lambda: self.click_button("inventory"))
 
         self.button_inventory.place(x = 200, y = 160,width = 150,height = 50)
 
@@ -79,11 +79,10 @@ class Admin_Main_View:
 
     def click_button(self,button):
         if button == "products": 
-            apc.Admin_Products_create.generate_products(self)
-        elif button == "inventory": 
+            apc.Admin_Products_create.generate_products(self) 
+        elif button == "inventory":
             aic.Admin_Inventory_create.generate_inventory(self)
         elif button == "sales": 
             pass 
-        elif button == "users": 
+        elif button == "users":
             pass
-
