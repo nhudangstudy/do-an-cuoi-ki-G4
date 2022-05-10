@@ -24,14 +24,16 @@ class Admin_Process:
         app.click_button('inventory') 
         app.window.mainloop()
 
-    # @staticmethod
-    # def sales_button_handle(obj):
-    #     obj.window.destroy()
-    #     app = salesview.Sales_View()
-    #     app.window.mainloop()
+    @staticmethod
+    def sales_button_handle(obj):
+        obj.window.destroy()
+        app = amv.Admin_Main_View() 
+        app.click_button('sales') 
+        app.window.mainloop() 
 
-    # @staticmethod
-    # def user_button_handle(obj):
-    #     obj.window.destroy()
-    #     app = userview.User_View()
-    #     app.window.mainloop()
+    @staticmethod
+    def users_button_handle(obj):
+        obj.window.destroy()
+        app = amv.Admin_Main_View()
+        app.click_button('users')
+        app.window.mainloop()

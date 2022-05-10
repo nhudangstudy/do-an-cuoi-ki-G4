@@ -48,3 +48,10 @@ class Api:
         for item in warehouse:
             description_data.append(item["Description"])
         return description_data
+
+    def get_all_users_data(self):
+        users = self.users_collection.find()
+        users_data = []
+        for user in users:
+            users_data.append(user) 
+        return users_data
