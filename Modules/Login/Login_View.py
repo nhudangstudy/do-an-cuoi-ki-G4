@@ -18,6 +18,8 @@ class Login_View:
         self.window.geometry("%dx%d+%d+%d" % (self.window_width, self.window_height,
                              (self.screen_width - self.window_width) / 2, (self.screen_height - self.window_height) / 2))
         self.window.configure(bg = "#FFFFFF")
+        self.window.title("Login")
+        self.window.iconphoto(False, PhotoImage(file=f"./Images/Login/home.png"))
 
         self.canvas = Canvas(self.window, bg="#FFFFFF", height = 720, width = 1080, bd = 0, highlightthickness = 0, relief = "ridge")
         self.canvas.place(x = 0, y = 0)
