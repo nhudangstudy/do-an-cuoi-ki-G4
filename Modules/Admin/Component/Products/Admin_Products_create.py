@@ -33,27 +33,27 @@ class Admin_Products_create:
         obj.product_id_entry = Entry(obj.formframe, font=('Arial', 12))
         obj.product_id_entry.place(x=230, y=30, width=445, height=35)
 
-        obj.product_name_label = Label(text="Product name:", font=("Arial", 12, 'bold'), bg='#ffffff')
+        obj.product_name_label = Label(obj.formframe, text="Product name:", font=("Arial", 12, 'bold'), bg='#ffffff')
         obj.product_name_label.place(x=45, y=85, width=160, height=25)
         obj.product_name_entry = Entry(obj.formframe, font=('Arial', 12))
         obj.product_name_entry.place(x=230, y=80, width=445, height=35)
 
-        obj.description_label = Label(text="Description:", font=("Arial", 12, "bold"), bg='#ffffff')
+        obj.description_label = Label(obj.formframe,text="Description:", font=("Arial", 12, "bold"), bg='#ffffff')
         obj.description_label.place(x=45, y=135, width=130, height=25)
         obj.description_entry = Entry(obj.formframe, font=('Arial', 12))
         obj.description_entry.place(x=230, y=130, width=445, height=35)
 
-        obj.category_label = Label(text="Category:", font=("Arial", 12, "bold"), bg='#ffffff')
+        obj.category_label = Label(obj.formframe,text="Category:", font=("Arial", 12, "bold"), bg='#ffffff')
         obj.category_label.place(x=45, y=185, width=105, height=25)
         obj.category_entry = Entry(obj.formframe, font=('Arial', 12))
         obj.category_entry.place(x=230, y=180, width=445, height=35)
 
-        obj.price_label = Label(text="Price:", font=("Arial", 12, "bold"), bg='#ffffff')
+        obj.price_label = Label(obj.formframe, text="Price:", font=("Arial", 12, "bold"), bg='#ffffff')
         obj.price_label.place(x=45, y=235, width=65, height=25)
         obj.price_entry = Entry(obj.formframe, font=('Arial', 12))
         obj.price_entry.place(x=230, y=230, width=445, height=35)
 
-        obj.stock_label = Label(text="Stock:", font=("Arial", 12, "bold"), bg='#ffffff')
+        obj.stock_label = Label(obj.formframe, text="Stock:", font=("Arial", 12, "bold"), bg='#ffffff')
         obj.stock_label.place(x=45, y=285, width=70, height=25)
         obj.stock_entry = Entry(obj.formframe, font=('Arial', 12))
         obj.stock_entry.place(x=230, y=280, width=445, height=35)
