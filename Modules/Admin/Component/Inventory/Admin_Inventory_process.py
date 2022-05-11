@@ -15,39 +15,66 @@ class Admin_Inventory_Process:
         current_stock = obj.current_stock_entry.get()
         add_stock = obj.add_stock_entry.get()
         if product_name == '' or description == '' or category == '' or price == '' or current_stock == '' or add_stock == '':
-            mbox.showerror('Error','Invalid User Input')
+            return 0
         else:
-            obj.json_data = {
+            json_data = {
                 'Product_name': f'{product_name}',
                 'Description' : f'{description}',
                 'Category': f'{category}',
                 'Price': f'{price}',
-                'Stock': f'{current_stock}',
+                'Stock': f'{int(current_stock) + int(add_stock)}',
             }
+            return json_data
 
     @staticmethod
     def update_button_handle(obj):
         data = Admin_Inventory_Process.get_json_data(obj)
-        api = AdminApi.Admin_Api()
-        check = api.Admin_Api.update_items(data)
-        if check == -2:
-            mbox.showerror('Error','product id is not in collection but all informations are in collection')
+        if data == 0: 
+            mbox.showerror('Error','Invalid User Input')
         else:
-            for item in obj.tree.get_children():
-                obj.tree.delete(item)
-            for i in range(len(data)):
-                obj.tree.insert()
-            
-            mbox.showinfo('Success','Update successful')
-        reset(obj)
+            #get the product id selected in treeview 
+            product_id = obj.tree.item(obj.tree.selection())['values'][0] 
+            api = AdminApi.Admin_Api()
+            check = api.update_items(data, product_id)
+            if check == -2:
+                mbox.showerror('Error','product id is not in collection but all informations are in collection')
+            else:
+                for item in obj.tree.get_children():
+                    obj.tree.delete(item)
+                table_data = api.get_all_warehouse_data()
+                for row in table_data: 
+                    obj.tree.insert('', 'end', values=(row['Product_id'], row['Product_name'], row['Description'], row['Category'], row['Price'], row['Stock']))
+                mbox.showinfo('Success','Updated Succesfully')
+                obj.current_stock_entry.config(state=NORMAL)
+                obj.product_name_entry.delete(0, END)
+                obj.description_entry.delete(0, END)
+                obj.category_entry.delete(0, END)
+                obj.price_entry.delete(0, END)
+                obj.current_stock_entry.delete(0, END)
+                obj.add_stock_entry.delete(0, END)
+                obj.current_stock_entry.config(state=DISABLED)
+
+                
 
     @staticmethod
     def remove_button_handle(obj):
         api = AdminApi.Admin_Api()
-        data = obj.json_data
-        remove = api.remove_items(data)
+        #get the product id selected in treeview 
+        product_id = obj.tree.item(obj.tree.selection())['values'][0] 
+        check = api.remove_items(product_id) 
         mbox.showinfo('Success','Remove successful')
-        reset(obj)
+        for item in obj.tree.get_children(): 
+            obj.tree.delete(item) 
+        table_data = api.get_all_warehouse_data() 
+        for row in table_data: 
+            obj.tree.insert('', 'end', values=(row['Product_id'], row['Product_name'], row['Description'], row['Category'], row['Price'], row['Stock'])) 
+        obj.product_name_entry.delete(0, END) 
+        obj.description_entry.delete(0, END) 
+        obj.category_entry.delete(0, END) 
+        obj.price_entry.delete(0, END) 
+        obj.current_stock_entry.delete(0, END) 
+        obj.add_stock_entry.delete(0, END)
+
 
     @staticmethod
     def reset(obj):
@@ -57,3 +84,35 @@ class Admin_Inventory_Process:
         obj.price_entry.delete(0,END)
         obj.current_stock_entry.delete(0,END)
         obj.add_stock_entry.delete(0,END)
+
+    @staticmethod 
+    def search_button_handle(obj): 
+        api = AdminApi.Admin_Api() 
+        search_term = obj.search_entry.get()
+        if search_term == '': 
+            mbox.showerror('Error','Invalid User Input') 
+        else: 
+            for item in obj.tree.get_children(): 
+                obj.tree.delete(item) 
+            data  = api.warehouse_collection.find({'Product_name': {'$regex': f'{search_term}', '$options': 'i'}})
+            for row in data: 
+                obj.tree.insert('', 'end', values=(row['Product_id'], row['Product_name'], row['Description'], row['Category'], row['Price'], row['Stock']))
+
+    @staticmethod 
+    def reset_button_handle(obj): 
+        api = AdminApi.Admin_Api()
+        for item in obj.tree.get_children(): 
+            obj.tree.delete(item) 
+        table_data = api.get_all_warehouse_data()
+        for row in table_data: 
+            obj.tree.insert('', 'end', values=(row['Product_id'], row['Product_name'], row['Description'], row['Category'], row['Price'], row['Stock']))
+        obj.current_stock_entry.config(state=NORMAL)
+        obj.search_entry.delete(0,END)
+        obj.product_name_entry.delete(0,END) 
+        obj.description_entry.delete(0,END) 
+        obj.category_entry.delete(0,END)
+        obj.price_entry.delete(0,END)
+        obj.current_stock_entry.delete(0,END)
+        obj.add_stock_entry.delete(0,END)
+        obj.current_stock_entry.config(state=DISABLED)
+

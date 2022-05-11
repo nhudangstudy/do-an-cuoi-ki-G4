@@ -57,7 +57,7 @@ class Admin_Inventory_create:
 
         obj.category_label = Label(obj.formframe, text="Category:", font=('Arial', 12, 'bold'), bg='#ffffff')
         obj.category_label.place(x=20, y=125, width=110, height=25)
-        obj.category_entry = Label(obj.formframe, textvariable=obj.category, font=('Arial', 12))
+        obj.category_entry = Entry(obj.formframe, textvariable=obj.category, font=('Arial', 12))
         obj.category_entry.place(x=190, y=120, width=200, height=35)
 
         obj.price_label = Label(obj.formframe, text="Price:", font=('Arial', 12, 'bold'), bg='#ffffff')
@@ -67,7 +67,9 @@ class Admin_Inventory_create:
 
         obj.current_stock_label = Label(obj.formframe, text="Current stock:", font=('Arial', 12, 'bold'), bg='#ffffff')
         obj.current_stock_label.place(x=20, y=225, width=155, height=25)
-        obj.current_stock_entry = Entry(obj.formframe, textvariable=obj.current_stock, font=("Arial", 12))
+        
+        obj.current_stock = StringVar()
+        obj.current_stock_entry = Entry(obj.formframe, textvariable=obj.current_stock, font=("Arial", 12), state= DISABLED)
         obj.current_stock_entry.place(x=190, y=220, width=200, height=35)
 
         obj.add_stock_label = Label(obj.formframe, text="Add stock:", font=('Arial', 12, 'bold'), bg='#ffffff')
@@ -99,10 +101,10 @@ class Admin_Inventory_create:
         obj.search_entry.set_completion_list(product_name)
 
         #create button in search frame
-        obj.search_button = Button(obj.searchframe, text="Search",font=('Arial', 12, 'bold'), bg='#ccccfe')
+        obj.search_button = Button(obj.searchframe, text="Search",font=('Arial', 12, 'bold'), bg='#ccccfe', command= lambda: aip.Admin_Inventory_Process.search_button_handle(obj))
         obj.search_button.place(x=360, y=6,width=80, height=25)
 
-        obj.reset_button = Button(obj.searchframe, text='Reset', font=('Arial', 12, 'bold'), bg='#ccccfe')
+        obj.reset_button = Button(obj.searchframe, text='Reset', font=('Arial', 12, 'bold'), bg='#ccccfe', command=lambda: aip.Admin_Inventory_Process.reset_button_handle(obj))
         obj.reset_button.place(x=480, y=6, width=80, height=25)
 
     @staticmethod
@@ -118,7 +120,6 @@ class Admin_Inventory_create:
                 obj.category.set(cur['values'][3])
                 obj.price.set(cur['values'][4])
                 obj.current_stock.set(cur['values'][5])
-
             except:
                 pass
 

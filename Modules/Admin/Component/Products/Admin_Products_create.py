@@ -1,6 +1,6 @@
 from tkinter import *
 import Modules.Admin.Component.Products.Admin_Products_process as app
-
+import Api.Admin_Api as Api
 class Admin_Products_create:
 
     @staticmethod
@@ -26,9 +26,14 @@ class Admin_Products_create:
     @staticmethod
     def generate_products_form(obj):
         # create form in form frame
+        obj.product_id = StringVar()
+
+        api = Api.Admin_Api()
+        obj.product_id.set(api.get_last_prod_id())
+        
         obj.product_id_label = Label(obj.formframe, text="Product ID:", font=("Arial", 12, "bold"), bg='#ffffff')
         obj.product_id_label.place(x=45, y=35, width=125, height=25)
-        obj.product_id_entry = Entry(obj.formframe, font=('Arial', 12))
+        obj.product_id_entry = Entry(obj.formframe, font=('Arial', 12), textvariable=obj.product_id)
         obj.product_id_entry.place(x=230, y=30, width=445, height=35)
 
         obj.product_name_label = Label(obj.formframe, text="Product name:", font=("Arial", 12, 'bold'), bg='#ffffff')
@@ -61,5 +66,5 @@ class Admin_Products_create:
         obj.add_button = Button(obj.buttonframe, text="Add item", font=("Arial", 12, "bold"), bg='#ffffff', command = lambda: app.Admin_Products_Process.add_item_button_handle(obj))
         obj.add_button.place(x=15, y=10, width=175, height=40)
 
-        obj.back_button = Button(obj.buttonframe, text="Back", font=("Arial", 12, "bold"), bg='#ffffff', command = lambda: app.Admin_Products_Process.reset_button_handle(obj))
-        obj.back_button.place(x=265, y=10, width=175, height=40)
+        obj.remove_data = Button(obj.buttonframe, text="Remove", font=("Arial", 12, "bold"), bg='#ffffff', command = lambda: app.Admin_Products_Process.reset_button_handle(obj))
+        obj.remove_data.place(x=265, y=10, width=175, height=40)

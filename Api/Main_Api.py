@@ -55,3 +55,12 @@ class Api:
         for user in users:
             users_data.append(user) 
         return users_data
+
+    def get_last_prod_id(self): 
+        warehouse = self.warehouse_collection.find() 
+        #get last product id in warehouse
+        last_prod_id = 0 
+        for item in warehouse: 
+            if int(item["Product_id"][1:]) > last_prod_id: 
+                last_prod_id = int(item["Product_id"][1:]) 
+        return str(1000+last_prod_id+1).replace("1", "P", 1)

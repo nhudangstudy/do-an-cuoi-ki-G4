@@ -1,6 +1,4 @@
-from tkinter import messagebox
 import Api.Main_Api as main_api
-import json
 import datetime
 
 
@@ -22,7 +20,7 @@ class User_Api(main_api.Api):
     def create_new_invoice_id(self):
         self.last_invoice_id = self.get_last_invoice_id()
         id = self.last_invoice_id.split('-')[-1]
-        new_id = int(id) + 1
+        new_id = float(id) + 1
         self.new_invoice_id = 'INV-' + str(100+new_id).replace("1", "0", 1)
 
     def add_item_to_cart(self, product_name, quantity):
@@ -36,25 +34,25 @@ class User_Api(main_api.Api):
             product_price = data['Price']
             left_stock = data['Stock']
         try:
-            int(quantity)
-            if int(left_stock) < int(quantity):
+            float(quantity)
+            if float(left_stock) < float(quantity):
                 return -2  # error 2: not enough stock
             else:
-                left_stock = int(left_stock) - int(quantity)
+                left_stock = float(left_stock) - float(quantity)
         except:
             return -3  # error 3: error quantities
         # check product_id is in User_Api.total_cart
         if len(User_Api.total_cart) != 0:
             for i in range(len(User_Api.total_cart)):
                 if User_Api.total_cart[i]['Product_id'] == product_id:
-                    User_Api.total_cart[i]['Quantity'] = int(
-                        User_Api.total_cart[i]['Quantity']) + int(quantity)
-                    User_Api.total_cart[i]['Price'] = int(
-                        User_Api.total_cart[i]['Price']) + int(quantity) * int(product_price)
-                    if int(left_stock) < User_Api.total_cart[i]['Quantity']:
+                    User_Api.total_cart[i]['Quantity'] = float(
+                        User_Api.total_cart[i]['Quantity']) + float(quantity)
+                    User_Api.total_cart[i]['Price'] = float(
+                        User_Api.total_cart[i]['Price']) + float(quantity) * float(product_price)
+                    if float(left_stock) < User_Api.total_cart[i]['Quantity']:
                         return -2  # error 2: not enough stock
                     else:
-                        left_stock = int(left_stock) - int(quantity)
+                        left_stock = float(left_stock) - float(quantity)
                     User_Api.temp = User_Api.total_cart[i]['Price']
                     return -4  # error 4: product already in cart
 
@@ -62,7 +60,7 @@ class User_Api(main_api.Api):
             self.cart['Product_id'] = product_id
             self.cart['Product_name'] = product_name
             self.cart['Quantity'] = quantity
-            self.cart['Price'] = int(product_price) * int(quantity)
+            self.cart['Price'] = float(product_price) * float(quantity)
             User_Api.total_cart.append(self.cart)
 
             return self.cart
@@ -72,7 +70,7 @@ class User_Api(main_api.Api):
             self.cart['Product_id'] = product_id
             self.cart['Product_name'] = product_name
             self.cart['Quantity'] = quantity
-            self.cart['Price'] = int(product_price) * int(quantity)
+            self.cart['Price'] = float(product_price) * float(quantity)
 
             # add cart to cart.json in Data folder
             User_Api.total_cart.append(self.cart)
@@ -95,7 +93,7 @@ class User_Api(main_api.Api):
                 {'Product_name': User_Api.total_cart[i]['Product_name']})
             for data in self.cursor:
                 self.warehouse_collection.update_one({'Product_name': User_Api.total_cart[i]['Product_name']}, {
-                                                     '$set': {'Stock': int(data['Stock']) - int(User_Api.total_cart[i]['Quantity'])}})
+                                                     '$set': {'Stock': float(data['Stock']) - float(User_Api.total_cart[i]['Quantity'])}})
 
         User_Api.total_cart = []
         User_Api.temp = 0

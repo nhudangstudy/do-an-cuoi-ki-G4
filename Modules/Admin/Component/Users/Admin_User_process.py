@@ -6,11 +6,11 @@ class Admin_User_Process:
 
     @staticmethod
     def reset_data(obj):
-        obj.entry_role.config(state = NORMAL)
+        obj.entry_username.config(state = NORMAL)
         obj.entry_username.delete(0,END)
         obj.entry_password.delete(0,END)
         obj.entry_role.delete(0,END)
-        # obj.entry_role.config(state = DISABLED)
+        obj.entry_username.config(state = DISABLED)
 
 
     @staticmethod
@@ -42,6 +42,7 @@ class Admin_User_Process:
             users = api.get_all_users_data() 
             for user in users: 
                 obj.tree.insert('', 'end', values=(user['username'], user['password'], user['roles']))
+            mbox.showinfo("Success", "Updated Successfully")
 
     @staticmethod
     def delete_button_handle(obj):
@@ -54,5 +55,4 @@ class Admin_User_Process:
         # remove data from treeview
         obj.tree.delete(obj.tree.selection())
         mbox.showinfo("Success", "User removed")
-
         Admin_User_Process.reset_data(obj)
