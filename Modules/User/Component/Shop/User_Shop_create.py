@@ -1,9 +1,9 @@
 from tkinter import *
 import Modules.User.Component.Shop.User_Shop_process as usp
-import Modules.User.Component.Shop.User_Shop_create as usc
 import Api.User_Api as Api
 from tkinter import ttk
 import Service.Widget_service as ws
+
 
 
 class User_Shop_create:
@@ -69,7 +69,7 @@ class User_Shop_create:
         obj.scrollbarx.grid(row=2, column=0, columnspan=7, sticky=(N, S, W, E))
         obj.tree.configure(yscrollcommand=obj.scrollbary.set,
                            xscrollcommand=obj.scrollbarx.set)
-
+        usp.User_Shop_process.refresh_treeview(obj)
     @staticmethod
     def generate_shop_form(obj):
         # create form in form frame
@@ -157,3 +157,7 @@ class User_Shop_create:
         obj.total_entry = Entry(obj.buttonframe, textvariable=obj.total, font=(
             "Arial", 20), state=DISABLED, width=20)
         obj.total_entry.place(x=120, y=150, width=200, height=30)
+        try: 
+            usp.User_Shop_process.get_total_ammount(obj)
+        except:
+            pass

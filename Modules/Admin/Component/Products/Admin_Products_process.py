@@ -18,7 +18,7 @@ class Admin_Products_Process:
         if product_id == "" or product_name == "" or category == "" or price == "" or stock == "":
             messagebox.showerror("Error", "Invalid Input")
         else:
-            json_data = {"Product_id": f"{product_id}", "Product name": f"{product_name}",
+            json_data = {"Product_id": f"{product_id}", "Product_name": f"{product_name}",
                          "Description": f"{description}", "Category": f"{category}",
                          "Price": float(f"{price}"), "Stock": int(f"{stock}")}
             check = api.add_new_item(json_data)
@@ -31,7 +31,9 @@ class Admin_Products_Process:
 
     @staticmethod
     def reset_button_handle(obj):
-        obj.product_id_entry.delete(0, END)
+        api = admin_api.Admin_Api() 
+        new_prod_id = api.get_last_prod_id()
+        obj.product_id.set(new_prod_id)
         obj.product_name_entry.delete(0, END)
         obj.description_entry.delete(0, END)
         obj.category_entry.delete(0, END)
