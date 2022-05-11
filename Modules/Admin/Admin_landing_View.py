@@ -19,7 +19,9 @@ class Admin_View:
                              (self.screen_width - self.window_width) / 2, (self.screen_height - self.window_height) / 2))
 
         self.window.configure(bg="#ffffff")
-        self.window.title('Admin Landing Page')
+        self.window.title('Admin')
+        self.window.iconphoto(False, PhotoImage(
+            file=f"./Images/User/MainPage/UserIcon.png"))
 
         self.canvas = Canvas(self.window, bg="#ffffff", height=720, width=1080,
                              bd=0, highlightthickness=0, relief="ridge")

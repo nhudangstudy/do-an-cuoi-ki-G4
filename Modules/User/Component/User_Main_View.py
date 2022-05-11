@@ -68,4 +68,3 @@ class User_Main_View:
             uic.User_Items_create.generate_items(self)
         elif button == "shop": 
             usc.User_Shop_create.generate_shop(self)
-        

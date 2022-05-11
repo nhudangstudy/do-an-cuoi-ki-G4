@@ -18,7 +18,7 @@ class Sign_up_View:
         self.window.geometry("%dx%d+%d+%d" % (self.window_width, self.window_height,
                              (self.screen_width - self.window_width) / 2, (self.screen_height - self.window_height) / 2))
                              
-        self.window.title("Signup Page")
+        self.window.title("Sign Up")
         self.window.configure(bg = "#f6efff")
         self.window.iconphoto(False, PhotoImage(file = f"./Images/Login/home.png"))
 
