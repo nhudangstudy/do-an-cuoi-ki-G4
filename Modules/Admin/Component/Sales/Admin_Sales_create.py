@@ -1,10 +1,7 @@
-from tkinter import *
-from tkinter import ttk
+from tkinter import * 
 import Service.Widget_service as ws 
 import Api.Admin_Api as Api
-import Modules.Admin.Component.Sales.Admin_Sales_process as asp
-
-
+from tkinter import ttk 
 class Admin_Sales_create: 
     @staticmethod 
     def generate_sales(obj): 
@@ -13,12 +10,12 @@ class Admin_Sales_create:
             frame.place_forget() 
         obj.allframes = [] 
     
-        # craete search frame
+        #craete search frame 
         obj.searchframe = Frame(obj.window, bg="pink") 
         obj.searchframe.place(x=80, y=250, width=900, height=50) 
         obj.allframes.append(obj.searchframe) 
 
-        # create table frame
+        #create table frame 
         obj.tableframe = Frame(obj.window, bg="pink") 
         obj.tableframe.place(x=80, y=310, width=900, height=400)
         obj.allframes.append(obj.tableframe)
@@ -29,10 +26,10 @@ class Admin_Sales_create:
     @staticmethod 
     def generate_search(obj): 
         api = Api.Admin_Api()
-        # create search label
+        #create search label 
         obj.searchlabel = Label(obj.searchframe, text="Search", bg="pink") 
         obj.searchlabel.place(x=0, y=0, width=100, height=50)
-        # create search entry
+        #create search entry 
 
         all_invoices = api.get_all_invoices_data()
         list = []
@@ -42,18 +39,17 @@ class Admin_Sales_create:
         obj.searchentry = ws.myentry(obj.searchframe) 
         obj.searchentry.place(x=100, y=0, width=200, height=50) 
         obj.searchentry.set_completion_list(list)
-        # create search button
-        obj.searchbutton = Button(obj.searchframe, text="Search", command=lambda: asp.Admin_Sales_Process.search_button_handle(obj))
+        #create search button 
+        obj.searchbutton = Button(obj.searchframe, text="Search")
         obj.searchbutton.place(x=300, y=0, width=100, height=50)
-        # create visualize button
-        obj.visualizebutton = Button(obj.searchframe, text="Visualize", command=lambda: asp.Admin_Sales_Process.visualize_button_handle(obj))
-        obj.visualizebutton.place(x=400, y=0, width=100, height=50)
-
+        #create visualize button 
+        obj.visualizebutton = Button(obj.searchframe, text="Visualize")
+        obj.visualizebutton.place(x=400, y=0, width=100, height=50) 
     @staticmethod 
     def generate_treeview(obj): 
         
         api = Api.Admin_Api() 
-        # create a tree view
+        #create a tree view 
         obj.tree = ttk.Treeview(obj.tableframe, columns=("Invoice_Id", "InvoiceDate", "Product_id", "Product_name", "Quantity", "Price"), height=10)
         obj.tree.place(x=0, y=0, width=1000, height=400)
         obj.tree.heading("#0") 
@@ -64,7 +60,7 @@ class Admin_Sales_create:
         obj.tree.heading("Quantity", text="Quantity")
         obj.tree.heading("Price", text="Price")
 
-        obj.tree.column("#0", width=0, stretch=False)
+        obj.tree.column("#0", width=0, stretch= False)
         obj.tree.column("Invoice_Id", width=150, stretch=False)
         obj.tree.column("InvoiceDate", width=150, stretch=False)
         obj.tree.column("Product_id", width=150, stretch=False)
