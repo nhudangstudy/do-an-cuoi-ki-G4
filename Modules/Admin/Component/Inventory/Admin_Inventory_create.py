@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import ttk
 import Api.Admin_Api as Api
 import Service.Widget_service as ws
-
+import Modules.Admin.Component.Inventory.Admin_Inventory_process as aip
 class Admin_Inventory_create:
 
     @staticmethod
@@ -78,10 +78,10 @@ class Admin_Inventory_create:
     @staticmethod
     def generate_inventory_button(obj):
         # create buttons in button frame
-        obj.update_button = Button(obj.buttonframe, text='Update', font=('Arial', 12, 'bold'), bg='#ccccfe')
+        obj.update_button = Button(obj.buttonframe, text='Update', font=('Arial', 12, 'bold'), bg='#ccccfe', command=lambda: aip.Admin_Inventory_Process.update_button_handle(obj))
         obj.update_button.place(x=20, y=5, width=150, height=50)
 
-        obj.remove_button = Button(obj.buttonframe, text="Remove", font=('Arial', 12, 'bold'), bg='#ccccfe')
+        obj.remove_button = Button(obj.buttonframe, text="Remove", font=('Arial', 12, 'bold'), bg='#ccccfe',command=lambda: aip.Admin_Inventory_Process.remove_button_handle(obj))
         obj.remove_button.place(x=230, y=5, width=150, height=50)
 
     @staticmethod

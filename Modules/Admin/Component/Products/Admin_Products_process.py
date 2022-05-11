@@ -16,7 +16,7 @@ class Admin_Products_Process:
         price = obj.price_entry.get()
         stock = obj.stock_entry.get()
         if product_id == "" or product_name == "" or category == "" or price == "" or stock == "":
-            messagebox.showerror("Error", "Invalid User Input")
+            messagebox.showerror("Error", "Invalid Input")
         else:
             json_data = {"Product_id": f"{product_id}", "Product name": f"{product_name}",
                          "Description": f"{description}", "Category": f"{category}",

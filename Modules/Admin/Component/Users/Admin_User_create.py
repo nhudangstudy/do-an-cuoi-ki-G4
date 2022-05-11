@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import ttk 
 import Api.Admin_Api as Api 
 import Service.Widget_service as ws 
+import Modules.Admin.Component.Users.Admin_User_process as aup
+from tkinter import messagebox as mbox
 class Admin_User_create: 
     @staticmethod 
     def generate_users(obj): 
@@ -86,18 +88,18 @@ class Admin_User_create:
         obj.entry_role.place(x=100, y=140, width=300, height=50)
          
          #create update button 
-        obj.button_update = Button(obj.formframe, text="Update") 
+        obj.button_update = Button(obj.formframe, text="Update",command=lambda: aup.Admin_User_Process.update_button_handle(obj)) 
         obj.button_update.place(x=100, y=200, width=100, height=50) 
         #create delete button 
-        obj.button_delete = Button(obj.formframe, text="Delete") 
+        obj.button_delete = Button(obj.formframe, text="Delete",command=lambda: aup.Admin_User_Process.delete_button_handle(obj)) 
         obj.button_delete.place(x=200, y=200, width=100, height=50) 
 
         #create create button
-        obj.button_create = Button(obj.formframe, text="Create new user", command=lambda: Admin_User_create.create_user())
+        obj.button_create = Button(obj.formframe, text="Create new user", command=lambda: Admin_User_create.create_user(obj))
         obj.button_create.place(x=100, y=250, width=200, height=50) 
 
     @staticmethod 
-    def create_user(): 
+    def create_user(obj): 
         window = Tk()
         window.title("Create new user") 
         window.geometry("500x500") 
@@ -124,11 +126,31 @@ class Admin_User_create:
         entry_role.place(x=100, y=140, width=200, height=50)
 
         # create create button 
-        button_create = Button(window, text="Create")
+        button_create = Button(window, text="Create",command= lambda: add_new_user(entry_username, entry_password, entry_role))
         button_create.place(x=100, y=200, width=100, height=50) 
         #exit button 
         button_exit = Button(window, text="Exit", command=window.destroy) 
         button_exit.place(x=200, y=200, width=100, height=50) 
+
+        def add_new_user(entry_username, entry_password, entry_role):
+            username = entry_username.get()
+            password = entry_password.get()
+            roles = entry_role.get()
+            
+            if username == "" or password== "" or roles == "": 
+                mbox.showerror("Error", "PLease fill in all fields")
+                return
+            data = {
+                "username": username, 
+                "password": password, 
+                "roles": roles
+            }
+            api = Api.Admin_Api()
+            check = api.add_new_user(data)
+            if check == -1: 
+                mbox.showerror("erorr", "user has already exists")
+            else: 
+                mbox.showinfo("Success", "New User created")
 
         window.mainloop() 
 

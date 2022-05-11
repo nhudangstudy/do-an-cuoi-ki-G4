@@ -1,7 +1,5 @@
 import json
 import Api.Main_Api as main_api
-from bson.objectid import ObjectId
-
 
 class Admin_Api(main_api.Api):
     def __init__(self):
@@ -80,8 +78,8 @@ class Admin_Api(main_api.Api):
         print("Updated successfully")
         return 0  # success
 
-    def remove_user(self, json_data):
-        username = json_data["username"]
+    def remove_user(self, data):
+        username = data[0]
         # get user in json_data
         user = self.users_collection.find_one({'username': username})
         _id = user['_id']  # get _id of user
@@ -91,7 +89,7 @@ class Admin_Api(main_api.Api):
 
     def add_new_user(self, json_data): 
         # get user in json_data 
-        user = self.users_container.find_one({'username': json_data["username"]})
+        user = self.users_collection.find_one({'username': json_data["username"]})
         if user == None: 
             #add to database 
             self.users_collection.insert_one(json_data) 
