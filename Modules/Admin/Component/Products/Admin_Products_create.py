@@ -1,5 +1,4 @@
 from tkinter import *
-import Modules.Admin.Component.Products.Admin_Products_process as admin_pp
 
 
 class Admin_Products_create:
@@ -22,7 +21,7 @@ class Admin_Products_create:
         Admin_Products_create.generate_products_form(obj)
         Admin_Products_create.generate_products_button(obj)
 
-        # Generate product button and product form
+        #Generate product button and product form 
         Admin_Products_create.generate_products_button(obj)
         Admin_Products_create.generate_products_form(obj)
 
@@ -39,12 +38,12 @@ class Admin_Products_create:
         obj.product_name_entry = Entry(obj.formframe, font=('Arial', 12))
         obj.product_name_entry.place(x=230, y=80, width=445, height=35)
 
-        obj.description_label = Label(obj.formframe, text="Description:", font=("Arial", 12, "bold"), bg='#ffffff')
+        obj.description_label = Label(obj.formframe,text="Description:", font=("Arial", 12, "bold"), bg='#ffffff')
         obj.description_label.place(x=45, y=135, width=130, height=25)
         obj.description_entry = Entry(obj.formframe, font=('Arial', 12))
         obj.description_entry.place(x=230, y=130, width=445, height=35)
 
-        obj.category_label = Label(obj.formframe, text="Category:", font=("Arial", 12, "bold"), bg='#ffffff')
+        obj.category_label = Label(obj.formframe,text="Category:", font=("Arial", 12, "bold"), bg='#ffffff')
         obj.category_label.place(x=45, y=185, width=105, height=25)
         obj.category_entry = Entry(obj.formframe, font=('Arial', 12))
         obj.category_entry.place(x=230, y=180, width=445, height=35)
@@ -61,8 +60,8 @@ class Admin_Products_create:
 
     @staticmethod
     def generate_products_button(obj):
-        obj.add_button = Button(obj.buttonframe, text="Add item", font=("Arial", 12, "bold"), bg='#ffffff', command=lambda: admin_pp.Admin_Products_Process.add_item_button_handle(obj))
+        obj.add_button = Button(obj.buttonframe, text="Add item", font=("Arial", 12, "bold"), bg='#ffffff')
         obj.add_button.place(x=15, y=10, width=175, height=40)
 
-        obj.back_button = Button(obj.buttonframe, text="Reset", font=("Arial", 12, "bold"), bg='#ffffff', command=lambda: admin_pp.Admin_Products_Process.back_button_handle(obj))
+        obj.back_button = Button(obj.buttonframe, text="Back", font=("Arial", 12, "bold"), bg='#ffffff')
         obj.back_button.place(x=265, y=10, width=175, height=40)
