@@ -1,5 +1,5 @@
 from tkinter import *
-
+import Modules.Admin.Component.Products.Admin_Products_process as app
 
 class Admin_Products_create:
 
@@ -60,8 +60,8 @@ class Admin_Products_create:
 
     @staticmethod
     def generate_products_button(obj):
-        obj.add_button = Button(obj.buttonframe, text="Add item", font=("Arial", 12, "bold"), bg='#ffffff')
+        obj.add_button = Button(obj.buttonframe, text="Add item", font=("Arial", 12, "bold"), bg='#ffffff', command = lambda: app.Admin_Products_Process.add_item_button_handle(obj))
         obj.add_button.place(x=15, y=10, width=175, height=40)
 
-        obj.back_button = Button(obj.buttonframe, text="Back", font=("Arial", 12, "bold"), bg='#ffffff')
+        obj.back_button = Button(obj.buttonframe, text="Back", font=("Arial", 12, "bold"), bg='#ffffff', command = lambda: app.Admin_Products_Process.reset_button_handle(obj))
         obj.back_button.place(x=265, y=10, width=175, height=40)

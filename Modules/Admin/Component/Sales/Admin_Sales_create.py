@@ -2,6 +2,7 @@ from tkinter import *
 import Service.Widget_service as ws 
 import Api.Admin_Api as Api
 from tkinter import ttk 
+import Modules.Admin.Component.Sales.Admin_Sales_process as asp
 class Admin_Sales_create: 
     @staticmethod 
     def generate_sales(obj): 
@@ -40,10 +41,10 @@ class Admin_Sales_create:
         obj.searchentry.place(x=100, y=0, width=200, height=50) 
         obj.searchentry.set_completion_list(list)
         #create search button 
-        obj.searchbutton = Button(obj.searchframe, text="Search")
+        obj.searchbutton = Button(obj.searchframe, text="Search", command= lambda: asp.Admin_Sales_Process.search_button_handle(obj))
         obj.searchbutton.place(x=300, y=0, width=100, height=50)
         #create visualize button 
-        obj.visualizebutton = Button(obj.searchframe, text="Visualize")
+        obj.visualizebutton = Button(obj.searchframe, text="Visualize", command= lambda: asp.Admin_Sales_Process.visualize_button_handle(obj))
         obj.visualizebutton.place(x=400, y=0, width=100, height=50) 
     @staticmethod 
     def generate_treeview(obj): 
