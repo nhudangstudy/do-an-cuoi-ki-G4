@@ -24,14 +24,8 @@ class User_Shop_process:
             messagebox.showinfo("Error", "Error quantity")
         elif check == -4:
 
-            for item in obj.tree.get_children():
-                obj.tree.delete(item)
-            # update treeview data
-            data = api.total_cart
-            for item in data:
-                obj.tree.insert("", END, values=(
-                    item["Product_id"], item["Product_name"], item["Quantity"], item["Price"]))
-                User_Shop_process.get_total_ammount(obj)
+            User_Shop_process.refresh_treeview(obj)
+            User_Shop_process.get_total_ammount(obj)
             obj.price.set(api.temp)
             messagebox.showinfo("Success", "Item upadated")
         else:
@@ -88,3 +82,13 @@ class User_Shop_process:
             # check item is entry
             if isinstance(item, Entry):
                 item.delete(0, END)
+
+    @staticmethod 
+    def refresh_treeview(obj):
+        # update treeview 
+        api = Api.User_Api() 
+        for item in obj.tree.get_children(): 
+            obj.tree.delete(item) 
+        data = api.total_cart 
+        for item in data:
+            obj.tree.insert("", END, values=(item["Product_id"], item["Product_name"], item["Quantity"], item["Price"]))
