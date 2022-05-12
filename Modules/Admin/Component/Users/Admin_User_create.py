@@ -148,7 +148,7 @@ class Admin_User_create:
             api = Api.Admin_Api()
             check = api.add_new_user(data)
             if check == -1: 
-                mbox.showerror("erorr", "user has already exists")
+                mbox.showerror("error", "user has already exists")
             else: 
                 mbox.showinfo("Success", "New User created")
 
