@@ -15,12 +15,12 @@ class Admin_User_create:
         obj.user_password = StringVar()
         obj.user_role = StringVar()
         #craete form frame 
-        obj.formframe = Frame(obj.window, bg="pink") 
+        obj.formframe = Frame(obj.window, bg='#fccde0') 
         obj.formframe.place(x=70, y=250, width=450, height=450) 
         obj.allframes.append(obj.formframe) 
 
         # create table frame 
-        obj.tableframe = Frame(obj.window, bg="pink") 
+        obj.tableframe = Frame(obj.window, bg='#fccde0') 
         obj.tableframe.place(x=540, y=250, width=450, height=450) 
         obj.allframes.append(obj.tableframe) 
         Admin_User_create.generate_user_table(obj)
@@ -69,17 +69,17 @@ class Admin_User_create:
 
     @staticmethod 
     def generate_form(obj): 
-        obj.label_username = Label(obj.formframe, text="Username", bg="pink") 
+        obj.label_username = Label(obj.formframe, text="Username", bg='#fccde0', font=("Montserrat 12 bold")) 
         obj.label_username.place(x=0, y=0, width=100, height=50) 
         obj.entry_username = Entry(obj.formframe, textvariable=obj.user_name, state=DISABLED) 
         obj.entry_username.place(x=100, y=0, width=300, height=50) 
 
-        obj.label_password = Label(obj.formframe, text="Password", bg="pink") 
+        obj.label_password = Label(obj.formframe, text="Password", bg='#fccde0', font=("Montserrat 12 bold")) 
         obj.label_password.place(x=0, y= 70, width=100, height=50) 
         obj.entry_password = Entry(obj.formframe, textvariable=obj.user_password) 
         obj.entry_password.place(x=100, y=70, width=300, height=50) 
 
-        obj.label_role = Label(obj.formframe, text="Role", bg="pink") 
+        obj.label_role = Label(obj.formframe, text="Role", bg='#fccde0', font=("Montserrat 12 bold")) 
         obj.label_role.place(x=0, y=140, width=100, height=50)
         
         
@@ -104,21 +104,21 @@ class Admin_User_create:
         window.title("Create new user") 
         window.geometry("500x500") 
         window.resizable(False, False) 
-        window.configure(background="pink") 
+        window.configure(background="'#fccde0") 
         # create label 
-        label_username = Label(window, text="Username", bg="pink") 
+        label_username = Label(window, text="Username", bg='#fccde0') 
         label_username.place(x=0, y=0, width=100, height=50) 
         # create entry 
         entry_username = Entry(window) 
         entry_username.place(x=100, y=0, width=200, height=50) 
         # create label 
-        label_password = Label(window, text="Password", bg="pink")  
+        label_password = Label(window, text="Password", bg='#fccde0')  
         label_password.place(x=0, y=70, width=100, height=50) 
         # create entry
         entry_password = Entry(window) 
         entry_password.place(x=100, y=70, width=200, height=50) 
         # create label
-        label_role = Label(window, text="Role", bg="pink")
+        label_role = Label(window, text="Role", bg='#fccde0')
         label_role.place(x=0, y=140, width=100, height=50)
         # create entry
         entry_role = ws.mycombobox(window)
