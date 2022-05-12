@@ -29,22 +29,11 @@ class Admin_View:
         self.canvas.place(x=0, y=0)
 
         # -----background-----
-        self.background_img = PhotoImage(file=f"./Images/Admin/LandingPage/background.png")
-        self.background = self.canvas.create_image(708.0, 515.5, image=self.background_img)
-
-        # -----text-----
-        self.canvas.create_text(200, 425.5,
-                                text="A Sales Management System\nby Group 4 - K21416C",
-                                fill="#000000",
-                                font=("MontserratRoman-Regular", int(15.0)))
-
-        self.canvas.create_text(420, 297.0,
-                                text="ALWAYS THERE \nFOR YOUR BUSINESS",
-                                fill="#000000",
-                                font=("MontserratRoman-Black", int(50.0), "bold"))
+        self.background_img = PhotoImage(file=f"./Images/Admin/LandingPage/Background.png")
+        self.background = self.canvas.create_image(565, 375, image=self.background_img)
 
         # -----button-log-out-----
-        self.img_log_out = PhotoImage(file=f"./Images/Admin/LandingPage/img_log_out.png")
+        self.img_log_out = PhotoImage(file=f"./Images/Admin/LandingPage/Button_Logout.png")
         self.button_log_out = Button(image=self.img_log_out, borderwidth=0,
                                      highlightthickness=0, relief="flat", bg="#ffffff", activebackground = "#ffffff",
                                      command=lambda: ap.Admin_Process.log_out_button_handle(self))
@@ -52,7 +41,7 @@ class Admin_View:
         self.button_log_out.place(x=800, y=60, width=210, height=60)
 
         # -----button-products-----
-        self.img_products = PhotoImage(file=f"./Images/Admin/LandingPage/img_products.png")
+        self.img_products = PhotoImage(file=f"./Images/Admin/LandingPage/Button_Products.png")
         self.button_products = Button(image=self.img_products, borderwidth=0,
                                       highlightthickness=0, relief="flat", bg="#ffffff", activebackground = "#ffffff",
                                       command=lambda: ap.Admin_Process.products_button_handle(self))
@@ -60,7 +49,7 @@ class Admin_View:
         self.button_products.place(x=49, y=582, width=170, height=55)
 
         # -----button-inventory-----
-        self.img_inventory = PhotoImage(file=f"./Images/Admin/LandingPage/img_inventory.png")
+        self.img_inventory = PhotoImage(file=f"./Images/Admin/LandingPage/Button_Inventory.png")
 
         self.button_inventory = Button(image=self.img_inventory, borderwidth=0,
                                        highlightthickness=0, relief="flat", bg="#ffffff", activebackground = "#ffffff",
@@ -69,14 +58,14 @@ class Admin_View:
         self.button_inventory.place(x=219, y=582, width=170, height=55)
 
         # -----button-sales-----
-        self.img_sales = PhotoImage(file=f"./Images/Admin/LandingPage/img_sales.png")
+        self.img_sales = PhotoImage(file=f"./Images/Admin/LandingPage/Button_Sales.png")
         self.button_sales = Button(image=self.img_sales, borderwidth=0, highlightthickness=0,
                                    relief="flat", bg="#ffffff", activebackground = "#ffffff", command=lambda: ap.Admin_Process.sales_button_handle(self))
 
         self.button_sales.place(x=389, y=582, width=170, height=55)
 
         # -----button-users-----
-        self.img_users = PhotoImage(file=f"./Images/Admin/LandingPage/img_users.png")
+        self.img_users = PhotoImage(file=f"./Images/Admin/LandingPage/Button_Users.png")
         self.button_users = Button(image=self.img_users, borderwidth=0, highlightthickness=0,
                                    relief="flat", bg="#ffffff", activebackground = "#ffffff", command=lambda: ap.Admin_Process.users_button_handle(self))
 

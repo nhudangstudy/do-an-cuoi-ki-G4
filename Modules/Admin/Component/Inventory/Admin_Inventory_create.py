@@ -105,7 +105,7 @@ class Admin_Inventory_create:
         obj.search_button.place(x=360, y=6,width=80, height=25)
 
         obj.reset_button = Button(obj.searchframe, text='Reset', font=('Montserrat', 12, 'bold'), bg='#ccccfe', command=lambda: aip.Admin_Inventory_Process.reset_button_handle(obj))
-        obj.reset_button.place(x=480, y=6, width=80, height=25)
+        obj.reset_button.place(x=460, y=6, width=80, height=25)
 
     @staticmethod
     def generate_inventory_table(obj):
