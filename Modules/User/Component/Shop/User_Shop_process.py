@@ -27,7 +27,7 @@ class User_Shop_process:
             User_Shop_process.refresh_treeview(obj)
             User_Shop_process.get_total_ammount(obj)
             obj.price.set(api.temp)
-            messagebox.showinfo("Success", "Item upadated")
+            messagebox.showinfo("Success", "Item updated")
         else:
             # add check to treeview
             obj.tree.insert("", "end", values=(
