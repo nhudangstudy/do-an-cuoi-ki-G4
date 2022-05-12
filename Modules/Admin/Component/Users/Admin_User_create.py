@@ -151,9 +151,7 @@ class Admin_User_create:
                 mbox.showerror("erorr", "user has already exists")
             else: 
                 mbox.showinfo("Success", "New User created")
-
-        window.mainloop() 
-
+                obj.tree.insert('', 'end', values=(username, password, roles))
 
      
 
