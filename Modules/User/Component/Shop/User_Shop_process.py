@@ -50,6 +50,12 @@ class User_Shop_process:
         obj.tree.delete(obj.tree.selection())
         # update total amount
         User_Shop_process.get_total_ammount(obj)
+        obj.product_id.set("")
+        obj.product_name.set("")
+        obj.quantity.set("")
+        obj.price.set("")
+        obj.search_entry.delete(0, END)
+        obj.quantity_entry.delete(0, END)
         messagebox.showinfo("Success", "Item removed from cart")
 
     @staticmethod
