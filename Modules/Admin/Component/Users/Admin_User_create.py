@@ -88,15 +88,15 @@ class Admin_User_create:
         obj.entry_role.place(x=100, y=140, width=300, height=50)
          
          #create update button 
-        obj.button_update = Button(obj.formframe, text="Update",command=lambda: aup.Admin_User_Process.update_button_handle(obj)) 
-        obj.button_update.place(x=100, y=200, width=100, height=50) 
+        obj.button_update = Button(obj.formframe, text="Update", font=("Montserrat", 10, "bold"), bg='#CCCCFE',command=lambda: aup.Admin_User_Process.update_button_handle(obj)) 
+        obj.button_update.place(x=150, y=200, width=100, height=50) 
         #create delete button 
-        obj.button_delete = Button(obj.formframe, text="Delete",command=lambda: aup.Admin_User_Process.delete_button_handle(obj)) 
-        obj.button_delete.place(x=200, y=200, width=100, height=50) 
+        obj.button_delete = Button(obj.formframe, text="Delete", font=("Montserrat", 10, "bold"), bg='#CCCCFE',command=lambda: aup.Admin_User_Process.delete_button_handle(obj)) 
+        obj.button_delete.place(x=250, y=200, width=100, height=50) 
 
         #create create button
-        obj.button_create = Button(obj.formframe, text="Create new user", command=lambda: Admin_User_create.create_user(obj))
-        obj.button_create.place(x=100, y=250, width=200, height=50) 
+        obj.button_create = Button(obj.formframe, text="Create new user", font=("Montserrat", 10, "bold"), bg='#CCCCFE', command=lambda: Admin_User_create.create_user(obj))
+        obj.button_create.place(x=150, y=250, width=200, height=50) 
 
     @staticmethod 
     def create_user(obj): 

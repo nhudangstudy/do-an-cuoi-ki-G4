@@ -41,10 +41,10 @@ class Admin_Sales_create:
         obj.searchentry.place(x=100, y=0, width=200, height=50) 
         obj.searchentry.set_completion_list(list)
         #create search button 
-        obj.searchbutton = Button(obj.searchframe, text="Search", command= lambda: asp.Admin_Sales_Process.search_button_handle(obj))
+        obj.searchbutton = Button(obj.searchframe, text="Search", font=("Montserrat", 10, "bold"), bg='#CCCCFE', command= lambda: asp.Admin_Sales_Process.search_button_handle(obj))
         obj.searchbutton.place(x=300, y=0, width=100, height=50)
         #create visualize button 
-        obj.visualizebutton = Button(obj.searchframe, text="Visualize", command= lambda: asp.Admin_Sales_Process.visualize_button_handle(obj))
+        obj.visualizebutton = Button(obj.searchframe, text="Visualize", font=("Montserrat", 10, "bold"), bg='#CCCCFE', command= lambda: asp.Admin_Sales_Process.visualize_button_handle(obj))
         obj.visualizebutton.place(x=400, y=0, width=100, height=50) 
     @staticmethod 
     def generate_treeview(obj): 

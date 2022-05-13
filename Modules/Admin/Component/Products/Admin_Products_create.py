@@ -64,7 +64,7 @@ class Admin_Products_create:
     @staticmethod
     def generate_products_button(obj):
         obj.add_button = Button(obj.buttonframe, text="Add item", font=("Montserrat", 12, "bold"), bg='#CCCCFE', command = lambda: app.Admin_Products_Process.add_item_button_handle(obj))
-        obj.add_button.place(x=15, y=10, width=175, height=40)
+        obj.add_button.place(x=55, y=10, width=175, height=40)
 
         obj.remove_data = Button(obj.buttonframe, text="Remove", font=("Montserrat", 12, "bold"), bg='#CCCCFE', command = lambda: app.Admin_Products_Process.reset_button_handle(obj))
         obj.remove_data.place(x=265, y=10, width=175, height=40)
