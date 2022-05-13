@@ -38,11 +38,11 @@ class Sign_up_View:
         self.reenterpass_entry.place(x = 335, y = 430, height = 33, width = 390)
 
         self.signup_image = PhotoImage(file = f"./Images/SignUp/Button_Signup.png")
-        self.signup_button = Button(self.window, image = self.signup_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#A8AAFC",command = lambda: signup_process.Sign_up_Process.signup_button_handle(self))
+        self.signup_button = Button(self.window, image = self.signup_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#A8AAFC", activebackground = "#A8AAFC",command = lambda: signup_process.Sign_up_Process.signup_button_handle(self))
         self.signup_button.place(x = 460, y = 530, width = 135, height = 45)
 
         self.signin_image = PhotoImage(file = f"./Images/SignUp/Button_Back.png")
-        self.signin_button = Button(self.window, image = self.signin_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#A4A6FD",command = lambda: signup_process.Sign_up_Process.login_button_handle(self))
+        self.signin_button = Button(self.window, image = self.signin_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#A4A6FD", activebackground = "#A4A6FD",command = lambda: signup_process.Sign_up_Process.login_button_handle(self))
         self.signin_button.place(x = 460, y = 585, width = 135, height = 45)
 
         self.entry_image = PhotoImage(file = f"./Images/SignUp/Textbox.png")

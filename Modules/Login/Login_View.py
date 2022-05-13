@@ -29,11 +29,11 @@ class Login_View:
 
         self.login_image = PhotoImage(file = f"./Images/Login/Button_Login.png")
         self.login_button = Button(image = self.login_image, borderwidth = 0,
-                                   highlightthickness = 0, relief = "flat", bg = "#ffffff", command=lambda: lgp.Login_Process.confirm_button_handle(self))
+                                   highlightthickness = 0, relief = "flat", bg = "#ffffff", activebackground = "#ffffff", command=lambda: lgp.Login_Process.confirm_button_handle(self))
         self.login_button.place(x = 190, y = 485, width = 135, height = 45)
 
         self.signup_image = PhotoImage(file = f"./Images/Login/Button_Signup.png")
-        self.signup_button = Button(image=self.signup_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#B6B3FB", command=lambda: lgp.Login_Process.signup_button_handle(self))
+        self.signup_button = Button(image=self.signup_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#B6B3FB", activebackground = "#B6B3FB", command=lambda: lgp.Login_Process.signup_button_handle(self))
         self.signup_button.place(x = 765, y = 430, width = 135, height = 50)
 
         self.entry_img = PhotoImage(file = f"./Images/Login/Textbox.png")
