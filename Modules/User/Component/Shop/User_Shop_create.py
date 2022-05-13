@@ -14,13 +14,13 @@ class User_Shop_create:
             frame.place_forget()
         obj.allframes = []
         # create new frames
-        obj.tableframe = Frame(obj.window, bg="pink")
+        obj.tableframe = Frame(obj.window, bg="#fccde0")
         obj.tableframe.place(x=50, y=250, width=980, height=200)
 
-        obj.formframe = Frame(obj.window, bg="pink")
+        obj.formframe = Frame(obj.window, bg="#fccde0")
         obj.formframe.place(x=50, y=480, width=480, height=200)
 
-        obj.buttonframe = Frame(obj.window, bg="pink")
+        obj.buttonframe = Frame(obj.window, bg="#fccde0")
         obj.buttonframe.place(x=550, y=480, width=480, height=200)
 
         obj.allframes.append(obj.tableframe)
@@ -81,32 +81,32 @@ class User_Shop_create:
         obj.total = StringVar()
 
         obj.product_id_label = Label(
-            obj.formframe, text="Product_id:", font=("Arial", 12, "bold"), bg="#ffffff")
-        obj.product_id_label.place(x=10, y=10, width=150, height=30)
+            obj.formframe, text="Product_id:", font=("Montserrat", 12, "bold"), bg="#fccde0")
+        obj.product_id_label.place(x=0, y=10, width=150, height=30)
         obj.product_id_entry = Entry(obj.formframe, textvariable=obj.product_id, font=(
-            "Arial", 12), state=DISABLED, width=20)
+            "Montserrat", 12), state=DISABLED, width=20)
         obj.product_id_entry.place(x=160, y=10, width=300, height=30)
 
         obj.product_name_label = Label(
-            obj.formframe, text="Product_name:", font=("Arial", 12, "bold"), bg="#ffffff")
-        obj.product_name_label.place(x=10, y=50, width=150, height=30)
+            obj.formframe, text="Product_name:", font=("Montserrat", 12, "bold"), bg="#fccde0")
+        obj.product_name_label.place(x=13, y=50, width=150, height=30)
 
         obj.product_name_entry = Entry(obj.formframe, textvariable=obj.product_name, font=(
-            "Arial", 12), state=DISABLED, width=150)
+            "Montserrat", 12), state=DISABLED, width=150)
         obj.product_name_entry.place(x=160, y=50, width=300, height=30)
 
         obj.quantity_label = Label(obj.formframe, text="Quantity:", font=(
-            "Arial", 12, "bold"), bg="#ffffff")
-        obj.quantity_label.place(x=10, y=90, width=150, height=30)
+            "Montserrat", 12, "bold"), bg="#fccde0")
+        obj.quantity_label.place(x=-12, y=90, width=150, height=30)
         obj.quantity_entry = Entry(obj.formframe, textvariable=obj.quantity, font=(
-            "Arial", 12),  state=DISABLED,  width=150)
+            "Montserrat", 12),  state=DISABLED,  width=150)
         obj.quantity_entry.place(x=160, y=90, width=300, height=30)
 
         obj.price_label = Label(obj.formframe, text="Price:", font=(
-            "Arial", 12, "bold"), bg="#ffffff")
-        obj.price_label.place(x=10, y=130, width=150, height=30)
+            "Montserrat", 12, "bold"), bg="#fccde0")
+        obj.price_label.place(x=-24, y=130, width=150, height=30)
         obj.price_entry = Entry(obj.formframe, textvariable=obj.price, font=(
-            "Arial", 12),  state=DISABLED,  width=150)
+            "Montserrat", 12),  state=DISABLED,  width=150)
         obj.price_entry.place(x=160, y=130, width=300, height=30)
 
     @staticmethod
@@ -114,16 +114,16 @@ class User_Shop_create:
         api = Api.User_Api()
         # process button
         obj.process_button = Button(obj.buttonframe, text="Process", font=(
-            "Arial", 12, "bold"), bg="#ffffff", command=lambda: usp.User_Shop_process.process_cart_handle(obj))
+            "Montserrat", 12, "bold"), bg="#ccccfe", command=lambda: usp.User_Shop_process.process_cart_handle(obj))
         obj.process_button.place(x=10, y=10, width=100, height=120)
 
         obj.search_label = Label(obj.buttonframe, text="Search:", font=(
-            "Arial", 12, "bold"), bg="#ffffff")
+            "Montserrat", 12, "bold"), bg="#fccde0")
         obj.search_label.place(x=120, y=10, width=100, height=30)
 
         obj.quantity_label = Label(obj.buttonframe, text="Quantity:", font=(
-            "Arial", 12, "bold"), bg="#ffffff")
-        obj.quantity_label.place(x=120, y=50, width=100, height=30)
+            "Montserrat", 12, "bold"), bg="#fccde0")
+        obj.quantity_label.place(x=126, y=50, width=100, height=30)
 
         # create search entry
         list = api.get_all_product_name()
@@ -131,32 +131,32 @@ class User_Shop_create:
         obj.search_entry = ws.myentry(
             obj.buttonframe, textvariable=obj.searchvar, width=20)
         obj.search_entry.set_completion_list(list)
-        # obj.search_entry = Entry(obj.buttonframe, font = ("Arial", 12), width=20)
+        # obj.search_entry = Entry(obj.buttonframe, font = ("Montserrat", 12), width=20)
         obj.search_entry.place(x=240, y=10, width=200, height=30)
 
         # create quantity entry
-        obj.quantity_entry_bframe = Entry(
-            obj.buttonframe, font=("Arial", 12), width=20)
-        obj.quantity_entry_bframe.place(x=240, y=50, width=200, height=30)
+        obj.quantity_entry = Entry(
+            obj.buttonframe, font=("Montserrat", 12), width=20)
+        obj.quantity_entry.place(x=240, y=50, width=200, height=30)
 
         # create add to cart button
         obj.add_button = Button(obj.buttonframe, text="Add to cart", font=(
-            "Arial", 12, "bold"), bg="#ffffff", command=lambda: usp.User_Shop_process.add_to_cart(obj))
+            "Montserrat", 12, "bold"), bg="#ccccfe", command=lambda: usp.User_Shop_process.add_to_cart(obj))
         obj.add_button.place(x=130, y=100, width=160, height=30)
 
         # create remove from cart button
         obj.remove_button = Button(obj.buttonframe, text="Remove", font=(
-            "Arial", 12, "bold"), bg="#ffffff", command=lambda: usp.User_Shop_process.remove_from_cart(obj))
+            "Montserrat", 12, "bold"), bg="#ccccfe", command=lambda: usp.User_Shop_process.remove_from_cart(obj))
         obj.remove_button.place(x=300, y=100, width=160, height=30)
 
         # create total amount label
         obj.total_label = Label(obj.buttonframe, text="Total:", font=(
-            "Arial", 20, "bold"), bg="#ffffff")
+            "Montserrat", 20, "bold"), bg="#fccde0")
         obj.total_label.place(x=10, y=150, width=100, height=30)
 
         # create total amount entry
         obj.total_entry = Entry(obj.buttonframe, textvariable=obj.total, font=(
-            "Arial", 20), state=DISABLED, width=20)
+            "Montserrat", 20), state=DISABLED, width=20)
         obj.total_entry.place(x=120, y=150, width=200, height=30)
         try: 
             usp.User_Shop_process.get_total_ammount(obj)
