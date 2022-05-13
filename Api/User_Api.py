@@ -85,23 +85,26 @@ class User_Api(main_api.Api):
     def process_cart(self):
         self.create_new_invoice_id()
         sum = 0
-        for i in range(len(User_Api.total_cart)):
-            sum = sum + User_Api.total_cart[i]['Price']
+        if len(User_Api.total_cart) != 0:
+            for i in range(len(User_Api.total_cart)):
+                sum = sum + User_Api.total_cart[i]['Price']
 
-        dict = {'Invoice_Id': self.new_invoice_id, 'InvoiceDate': datetime.datetime.now(
-        ), 'Cart': User_Api.total_cart, 'TotalAmount': sum}
-        self.invoices_collection.insert_one(dict)
-        # update stock in warehouse collection
-        for i in range(len(User_Api.total_cart)):
-            self.cursor = self.warehouse_collection.find(
-                {'Product_name': User_Api.total_cart[i]['Product_name']})
-            for data in self.cursor:
-                self.warehouse_collection.update_one({'Product_name': User_Api.total_cart[i]['Product_name']}, {
-                                                     '$set': {'Stock': float(data['Stock']) - float(User_Api.total_cart[i]['Quantity'])}})
+            dict = {'Invoice_Id': self.new_invoice_id, 'InvoiceDate': datetime.datetime.now(
+            ), 'Cart': User_Api.total_cart, 'TotalAmount': sum}
+            self.invoices_collection.insert_one(dict)
+            # update stock in warehouse collection
+            for i in range(len(User_Api.total_cart)):
+                self.cursor = self.warehouse_collection.find(
+                    {'Product_name': User_Api.total_cart[i]['Product_name']})
+                for data in self.cursor:
+                    self.warehouse_collection.update_one({'Product_name': User_Api.total_cart[i]['Product_name']}, {
+                                                        '$set': {'Stock': float(data['Stock']) - float(User_Api.total_cart[i]['Quantity'])}})
 
-        User_Api.total_cart = []
-        User_Api.temp = 0
-        return 0  # success
+            User_Api.total_cart = []
+            User_Api.temp = 0
+            return 0  # success
+        else: 
+            return -1
 
     # get all product name from warehouse collection
     def get_all_product_name(self):

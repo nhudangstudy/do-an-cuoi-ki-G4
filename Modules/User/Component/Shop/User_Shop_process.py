@@ -43,22 +43,25 @@ class User_Shop_process:
 
     @staticmethod
     def remove_from_cart(obj):
-        # get choosen data of obj.tree
-        data = obj.tree.item(obj.tree.selection())['values']
-        # remove data from cart
-        api = Api.User_Api()
-        api.remove_item_from_cart(data[1])
-        # remove data from treeview
-        obj.tree.delete(obj.tree.selection())
-        # update total amount
-        User_Shop_process.get_total_ammount(obj)
-        obj.product_id.set("")
-        obj.product_name.set("")
-        obj.quantity.set("")
-        obj.price.set("")
-        obj.search_entry.delete(0, END)
-        obj.quantity_entry.delete(0, END)
-        messagebox.showinfo("Success", "Item removed from cart")
+        try:
+            # get choosen data of obj.tree
+            data = obj.tree.item(obj.tree.selection())['values']
+            # remove data from cart
+            api = Api.User_Api()
+            api.remove_item_from_cart(data[1])
+            # remove data from treeview
+            obj.tree.delete(obj.tree.selection())
+            # update total amount
+            User_Shop_process.get_total_ammount(obj)
+            obj.product_id.set("")
+            obj.product_name.set("")
+            obj.quantity.set("")
+            obj.price.set("")
+            obj.search_entry.delete(0, END)
+            obj.quantity_entry.delete(0, END)
+            messagebox.showinfo("Success", "Product removed from cart")
+        except:
+            messagebox.showinfo("Error", "No product selected")
 
     @staticmethod
     def get_total_ammount(obj):
@@ -73,23 +76,31 @@ class User_Shop_process:
     @staticmethod
     def process_cart_handle(obj):
         api = Api.User_Api()
-        api.process_cart()
-        messagebox.showinfo("Success", "Cart processed")
-        # update treeview
-        for item in obj.tree.get_children():
-            obj.tree.delete(item)
+        check = api.process_cart()
+        if check == 0:
+            messagebox.showinfo("Success", "Cart processed")
+            # update treeview
+            for item in obj.tree.get_children():
+                obj.tree.delete(item)
 
-        # remove all data in form frame
-        obj.product_id.set("")
-        obj.product_name.set("")
-        obj.quantity.set("")
-        obj.price.set("")
-        obj.total.set("")
-        # remove data in button frame
-        for item in obj.buttonframe.winfo_children():
-            # check item is entry
-            if isinstance(item, Entry):
-                item.delete(0, END)
+            # remove all data in form frame
+            obj.product_id.set("")
+            obj.product_name.set("")
+            obj.quantity.set("")
+            obj.price.set("")
+            obj.total.set("")
+            # remove data in button frame
+            for item in obj.buttonframe.winfo_children():
+                # check item is entry
+                if isinstance(item, Entry):
+                    item.delete(0, END)
+        else: 
+            messagebox.showinfo("Error", "Empty cart")
+            obj.product_id.set("")
+            obj.product_name.set("")
+            obj.quantity.set("")
+            obj.price.set("")
+            obj.total.set("")
 
     @staticmethod 
     def refresh_treeview(obj):

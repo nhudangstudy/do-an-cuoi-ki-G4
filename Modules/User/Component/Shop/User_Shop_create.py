@@ -135,9 +135,9 @@ class User_Shop_create:
         obj.search_entry.place(x=240, y=10, width=200, height=30)
 
         # create quantity entry
-        obj.quantity_entry = Entry(
+        obj.quantity_entry_bframe = Entry(
             obj.buttonframe, font=("Montserrat", 12), width=20)
-        obj.quantity_entry.place(x=240, y=50, width=200, height=30)
+        obj.quantity_entry_bframe.place(x=240, y=50, width=200, height=30)
 
         # create add to cart button
         obj.add_button = Button(obj.buttonframe, text="Add to cart", font=(
