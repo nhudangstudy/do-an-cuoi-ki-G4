@@ -15,12 +15,12 @@ class Admin_User_create:
         obj.user_password = StringVar()
         obj.user_role = StringVar()
         #craete form frame 
-        obj.formframe = Frame(obj.window, bg="pink") 
+        obj.formframe = Frame(obj.window, bg='#fccde0') 
         obj.formframe.place(x=70, y=250, width=450, height=450) 
         obj.allframes.append(obj.formframe) 
 
         # create table frame 
-        obj.tableframe = Frame(obj.window, bg="pink") 
+        obj.tableframe = Frame(obj.window, bg='#fccde0') 
         obj.tableframe.place(x=540, y=250, width=450, height=450) 
         obj.allframes.append(obj.tableframe) 
         Admin_User_create.generate_user_table(obj)
@@ -69,17 +69,17 @@ class Admin_User_create:
 
     @staticmethod 
     def generate_form(obj): 
-        obj.label_username = Label(obj.formframe, text="Username", bg="pink") 
+        obj.label_username = Label(obj.formframe, text="Username", bg='#fccde0', font=("Montserrat 12 bold")) 
         obj.label_username.place(x=0, y=0, width=100, height=50) 
         obj.entry_username = Entry(obj.formframe, textvariable=obj.user_name, state=DISABLED) 
         obj.entry_username.place(x=100, y=0, width=300, height=50) 
 
-        obj.label_password = Label(obj.formframe, text="Password", bg="pink") 
+        obj.label_password = Label(obj.formframe, text="Password", bg='#fccde0', font=("Montserrat 12 bold")) 
         obj.label_password.place(x=0, y= 70, width=100, height=50) 
         obj.entry_password = Entry(obj.formframe, textvariable=obj.user_password) 
         obj.entry_password.place(x=100, y=70, width=300, height=50) 
 
-        obj.label_role = Label(obj.formframe, text="Role", bg="pink") 
+        obj.label_role = Label(obj.formframe, text="Role", bg='#fccde0', font=("Montserrat 12 bold")) 
         obj.label_role.place(x=0, y=140, width=100, height=50)
         
         
@@ -88,15 +88,15 @@ class Admin_User_create:
         obj.entry_role.place(x=100, y=140, width=300, height=50)
          
          #create update button 
-        obj.button_update = Button(obj.formframe, text="Update",command=lambda: aup.Admin_User_Process.update_button_handle(obj)) 
-        obj.button_update.place(x=100, y=200, width=100, height=50) 
+        obj.button_update = Button(obj.formframe, text="Update", font=("Montserrat", 10, "bold"), bg='#CCCCFE',command=lambda: aup.Admin_User_Process.update_button_handle(obj)) 
+        obj.button_update.place(x=150, y=200, width=100, height=50) 
         #create delete button 
-        obj.button_delete = Button(obj.formframe, text="Delete",command=lambda: aup.Admin_User_Process.delete_button_handle(obj)) 
-        obj.button_delete.place(x=200, y=200, width=100, height=50) 
+        obj.button_delete = Button(obj.formframe, text="Delete", font=("Montserrat", 10, "bold"), bg='#CCCCFE',command=lambda: aup.Admin_User_Process.delete_button_handle(obj)) 
+        obj.button_delete.place(x=250, y=200, width=100, height=50) 
 
         #create create button
-        obj.button_create = Button(obj.formframe, text="Create new user", command=lambda: Admin_User_create.create_user(obj))
-        obj.button_create.place(x=100, y=250, width=200, height=50) 
+        obj.button_create = Button(obj.formframe, text="Create new user", font=("Montserrat", 10, "bold"), bg='#CCCCFE', command=lambda: Admin_User_create.create_user(obj))
+        obj.button_create.place(x=150, y=250, width=200, height=50) 
 
     @staticmethod 
     def create_user(obj): 
@@ -104,21 +104,21 @@ class Admin_User_create:
         window.title("Create new user") 
         window.geometry("500x500") 
         window.resizable(False, False) 
-        window.configure(background="pink") 
+        window.configure(background="'#fccde0") 
         # create label 
-        label_username = Label(window, text="Username", bg="pink") 
+        label_username = Label(window, text="Username", bg='#fccde0') 
         label_username.place(x=0, y=0, width=100, height=50) 
         # create entry 
         entry_username = Entry(window) 
         entry_username.place(x=100, y=0, width=200, height=50) 
         # create label 
-        label_password = Label(window, text="Password", bg="pink")  
+        label_password = Label(window, text="Password", bg='#fccde0')  
         label_password.place(x=0, y=70, width=100, height=50) 
         # create entry
         entry_password = Entry(window) 
         entry_password.place(x=100, y=70, width=200, height=50) 
         # create label
-        label_role = Label(window, text="Role", bg="pink")
+        label_role = Label(window, text="Role", bg='#fccde0')
         label_role.place(x=0, y=140, width=100, height=50)
         # create entry
         entry_role = ws.mycombobox(window)

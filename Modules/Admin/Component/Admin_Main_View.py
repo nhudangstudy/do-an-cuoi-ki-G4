@@ -43,42 +43,42 @@ class Admin_Main_View:
         #-----button-products-----
         self.img_products = PhotoImage(file = f"./Images/Admin/MainPage/img_products.png")
         self.button_products = Button(image = self.img_products,borderwidth = 0,
-                                      highlightthickness = 0,relief = "flat", bg="#ffffff", command = lambda: self.click_button("products"))
+                                      highlightthickness = 0,relief = "flat", bg="#ffffff", activebackground = "#ffffff", command = lambda: self.click_button("products"))
 
         self.button_products.place(x = 30, y = 160,width = 155,height = 60)
 
         #-----button-inventory-----
         self.img_inventory = PhotoImage(file = f"./Images/Admin/MainPage/img_inventory.png")
         self.button_inventory = Button(image = self.img_inventory,borderwidth = 0,
-                                       highlightthickness = 0,relief = "flat", bg="#ffffff", command= lambda: self.click_button("inventory"))
+                                       highlightthickness = 0,relief = "flat", bg="#ffffff", activebackground = "#ffffff", command= lambda: self.click_button("inventory"))
 
         self.button_inventory.place(x = 200, y = 160,width = 155,height = 60)
 
         #-----button-sales-----
         self.img_sales = PhotoImage(file = f"./Images/Admin/MainPage/img_sales.png")
         self.button_sales = Button(image = self.img_sales,borderwidth = 0,
-                                   highlightthickness = 0,relief = "flat", bg="#ffffff", command = lambda: self.click_button("sales"))
+                                   highlightthickness = 0,relief = "flat", bg="#ffffff", activebackground = "#ffffff", command = lambda: self.click_button("sales"))
 
         self.button_sales.place(x = 380, y = 160,width = 155,height = 60)
 
         #-----button-users-----
         self.img_users = PhotoImage(file = f"./Images/Admin/MainPage/img_users.png")
         self.button_users = Button(image = self.img_users,borderwidth = 0,
-                                   highlightthickness = 0,relief = "flat", bg="#ffffff", command = lambda: self.click_button("users"))
+                                   highlightthickness = 0,relief = "flat", bg="#ffffff", activebackground = "#ffffff", command = lambda: self.click_button("users"))
 
         self.button_users.place(x = 550, y = 160,width = 155,height = 60)
 
         #-----button-switch-account-----
         self.img_switch = PhotoImage(file = f"./Images/Admin/MainPage/img_switch.png")
         self.button_switch = Button(image = self.img_switch,borderwidth = 0,
-                                    highlightthickness = 0,relief = "flat", bg="#ffffff", command = lambda: self.switch_account())
+                                    highlightthickness = 0,relief = "flat", bg="#ffffff", activebackground = "#ffffff", command = lambda: self.switch_account())
 
         self.button_switch.place(x = 730, y = 160,width = 155,height = 60)
 
         #-----button-exit-----
         self.img_exit = PhotoImage(file = f"./Images/Admin/MainPage/img_exit.png")
         self.button_exit = Button(image = self.img_exit,borderwidth = 0,
-                                  highlightthickness = 0,relief = "flat", bg="#ffffff", command = lambda: self.exit_button())
+                                  highlightthickness = 0,relief = "flat", bg="#ffffff", activebackground = "#ffffff", command = lambda: self.exit_button())
 
         self.button_exit.place(x = 900, y = 160,width = 155,height = 60)
         self.window.resizable(False, False)

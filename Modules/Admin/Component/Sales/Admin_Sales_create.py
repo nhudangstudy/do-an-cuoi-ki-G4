@@ -12,12 +12,12 @@ class Admin_Sales_create:
         obj.allframes = [] 
     
         #craete search frame 
-        obj.searchframe = Frame(obj.window, bg="pink") 
+        obj.searchframe = Frame(obj.window, bg='#fccde0') 
         obj.searchframe.place(x=80, y=250, width=900, height=50) 
         obj.allframes.append(obj.searchframe) 
 
         #create table frame 
-        obj.tableframe = Frame(obj.window, bg="pink") 
+        obj.tableframe = Frame(obj.window, bg='#fccde0') 
         obj.tableframe.place(x=80, y=310, width=900, height=400)
         obj.allframes.append(obj.tableframe)
 
@@ -28,7 +28,7 @@ class Admin_Sales_create:
     def generate_search(obj): 
         api = Api.Admin_Api()
         #create search label 
-        obj.searchlabel = Label(obj.searchframe, text="Search", bg="pink") 
+        obj.searchlabel = Label(obj.searchframe, text="SEARCH", bg='#fccde0', font=("Montserrat", 10, "bold")) 
         obj.searchlabel.place(x=0, y=0, width=100, height=50)
         #create search entry 
 
@@ -41,10 +41,10 @@ class Admin_Sales_create:
         obj.searchentry.place(x=100, y=0, width=200, height=50) 
         obj.searchentry.set_completion_list(list)
         #create search button 
-        obj.searchbutton = Button(obj.searchframe, text="Search", command= lambda: asp.Admin_Sales_Process.search_button_handle(obj))
+        obj.searchbutton = Button(obj.searchframe, text="Search", font=("Montserrat", 10, "bold"), bg='#CCCCFE', command= lambda: asp.Admin_Sales_Process.search_button_handle(obj))
         obj.searchbutton.place(x=300, y=0, width=100, height=50)
         #create visualize button 
-        obj.visualizebutton = Button(obj.searchframe, text="Visualize", command= lambda: asp.Admin_Sales_Process.visualize_button_handle(obj))
+        obj.visualizebutton = Button(obj.searchframe, text="Visualize", font=("Montserrat", 10, "bold"), bg='#CCCCFE', command= lambda: asp.Admin_Sales_Process.visualize_button_handle(obj))
         obj.visualizebutton.place(x=400, y=0, width=100, height=50) 
     @staticmethod 
     def generate_treeview(obj): 
@@ -72,6 +72,3 @@ class Admin_Sales_create:
         data = api.get_all_invoices_data() 
         for row in data:
             obj.tree.insert('', 'end', values=(row['Invoice_Id'], row['InvoiceDate'], row['Product_id'], row['Product_name'], row['Quantity'], row['Price'])) 
-
-
-

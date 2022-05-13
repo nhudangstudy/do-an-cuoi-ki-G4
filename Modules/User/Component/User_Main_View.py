@@ -33,19 +33,19 @@ class User_Main_View:
         self.background = self.canvas.create_image(540, 360, image=self.background_img)
 
         self.invoice_image = PhotoImage(file = f"./Images/User/MainPage/Button_Invoice.png")
-        self.invoice_button = Button(self.window, image = self.invoice_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#FFFFFF", command = lambda: self.click_button("shop"))
+        self.invoice_button = Button(self.window, image = self.invoice_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#FFFFFF", activebackground = "#FFFFFF", command = lambda: self.click_button("shop"))
         self.invoice_button.place(x=80, y=160, width=185, height=60)
 
         self.items_image = PhotoImage(file = f"./Images/User/MainPage/Button_Items.png")
-        self.items_button = Button(self.window, image = self.items_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#FFFFFF", command= lambda: self.click_button("items"))
+        self.items_button = Button(self.window, image = self.items_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#FFFFFF", activebackground = "#FFFFFF", command= lambda: self.click_button("items"))
         self.items_button.place(x=325, y=160, width=185, height=60)
 
         self.signout_image = PhotoImage(file = f"./Images/User/MainPage/Button_Signout.png")
-        self.signout_button = Button(self.window, image = self.signout_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#FFFFFF", command = self.change_account) 
+        self.signout_button = Button(self.window, image = self.signout_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#FFFFFF", activebackground = "#FFFFFF", command = self.change_account) 
         self.signout_button.place(x=570, y=160, width=185, height=60)
 
         self.quit_image = PhotoImage(file = f"./Images/User/MainPage/Button_Quit.png")
-        self.quit_button = Button(self.window, image = self.quit_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#FFFFFF", command= self.quit_button_click)
+        self.quit_button = Button(self.window, image = self.quit_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#FFFFFF", activebackground = "#FFFFFF", command= self.quit_button_click)
         self.quit_button.place(x=815, y=160, width=185, height=60)
         self.window.resizable(0,0)
     
