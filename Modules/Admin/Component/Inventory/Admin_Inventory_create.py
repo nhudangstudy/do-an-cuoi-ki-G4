@@ -46,7 +46,7 @@ class Admin_Inventory_create:
         obj.add_stock = StringVar()
 
         obj.product_name_label = Label(obj.formframe, text="Product name:", font=("Montserrat", 12, "bold"), bg='#fccde0')
-        obj.product_name_label.place(x=20, y=25, width=170, height=25)
+        obj.product_name_label.place(x=16, y=25, width=170, height=25)
         obj.product_name_entry = Entry(obj.formframe, textvariable=obj.product_name, font=("Montserrat", 12))
         obj.product_name_entry.place(x=190, y=20, width=200, height=35)
 
@@ -56,12 +56,12 @@ class Admin_Inventory_create:
         obj.description_entry.place(x=190, y=70, width=200, height=35)
 
         obj.category_label = Label(obj.formframe, text="Category:", font=('Montserrat', 12, 'bold'), bg='#fccde0')
-        obj.category_label.place(x=23, y=125, width=110, height=25)
+        obj.category_label.place(x=25, y=125, width=110, height=25)
         obj.category_entry = Entry(obj.formframe, textvariable=obj.category, font=('Montserrat', 12))
         obj.category_entry.place(x=190, y=120, width=200, height=35)
 
         obj.price_label = Label(obj.formframe, text="Price:", font=('Montserrat', 12, 'bold'), bg='#fccde0')
-        obj.price_label.place(x=27, y=175, width=70, height=25)
+        obj.price_label.place(x=30, y=175, width=70, height=25)
         obj.price_entry = Entry(obj.formframe, textvariable=obj.price, font=("Montserrat", 12))
         obj.price_entry.place(x=190, y=170, width=200, height=35)
 
@@ -73,7 +73,7 @@ class Admin_Inventory_create:
         obj.current_stock_entry.place(x=190, y=220, width=200, height=35)
 
         obj.add_stock_label = Label(obj.formframe, text="Add stock:", font=('Montserrat', 12, 'bold'), bg='#fccde0')
-        obj.add_stock_label.place(x=17, y=275, width=130, height=25)
+        obj.add_stock_label.place(x=18, y=275, width=130, height=25)
         obj.add_stock_entry = Entry(obj.formframe, textvariable=obj.add_stock, font=("Montserrat", 12))
         obj.add_stock_entry.place(x=190, y=270, width=200, height=35)
 
@@ -153,4 +153,3 @@ class Admin_Inventory_create:
 
         for product in products: 
             obj.tree.insert('', 'end', values=(product['Product_id'], product['Product_name'], product['Description'], product['Category'], product['Price'], product['Stock']))
-
