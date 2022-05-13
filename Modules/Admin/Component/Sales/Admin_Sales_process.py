@@ -3,6 +3,7 @@ import Api.Admin_Api as Api
 from datetime import datetime
 import matplotlib.pyplot as plt
 import seaborn as sns 
+import warnings
 class Admin_Sales_Process: 
     @staticmethod
     def search_button_handle(obj):
@@ -28,14 +29,15 @@ class Admin_Sales_Process:
 
         if len(date) > 30:
             date = date[-30:] 
-            total_price = total_price[-30:] 
+            total_price = total_price[-30:]     
+        warnings.simplefilter(action="ignore", category=FutureWarning)
+        x = date 
+        y = total_price 
+        #increase DPI 
+        plt.figure(figsize=(12, 6), dpi=100)
+        sns.regplot(x=x, y=y)
+        plt.show()
 
-        sns.set(style="darkgrid") 
-        plt.figure(figsize=(12, 6))
-        sns.lineplot(date, total_price) 
-        plt.xlabel("Date")
-        plt.ylabel("Total Price") 
-        plt.show() 
     
 
         

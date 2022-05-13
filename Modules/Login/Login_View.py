@@ -45,3 +45,4 @@ class Login_View:
 
         self.password_entry = Entry(self.window, show = "*", bd = 0, bg = "#C9C3FB", highlightthickness = 0)
         self.password_entry.place(x = 110, y = 405, width = 300, height = 28)
+        self.window.resizable(0,0)

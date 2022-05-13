@@ -49,3 +49,5 @@ class Sign_up_View:
         self.entry_bg1 = self.canvas.create_image(535, 450, image = self.entry_image)
         self.entry_bg2 = self.canvas.create_image(535, 350, image = self.entry_image)
         self.entry_bg3 = self.canvas.create_image(535, 250, image = self.entry_image)
+
+        self.window.resizable(0,0)

@@ -47,6 +47,7 @@ class User_Main_View:
         self.quit_image = PhotoImage(file = f"./Images/User/MainPage/Button_Quit.png")
         self.quit_button = Button(self.window, image = self.quit_image, borderwidth = 0, highlightthickness = 0, relief = "flat", bg = "#FFFFFF", command= self.quit_button_click)
         self.quit_button.place(x=815, y=160, width=185, height=60)
+        self.window.resizable(0,0)
     
     def quit_button_click(self): 
         if messagebox.askyesno("Quit", "Are you sure you want to quit?"): 

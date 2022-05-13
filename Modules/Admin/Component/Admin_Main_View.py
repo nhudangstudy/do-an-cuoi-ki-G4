@@ -81,6 +81,7 @@ class Admin_Main_View:
                                   highlightthickness = 0,relief = "flat", bg="#ffffff", command = lambda: self.exit_button())
 
         self.button_exit.place(x = 900, y = 160,width = 155,height = 60)
+        self.window.resizable(False, False)
 
     def click_button(self,button):
         if button == "products": 

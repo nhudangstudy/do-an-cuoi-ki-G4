@@ -81,3 +81,5 @@ class Admin_View:
                                    relief="flat", bg="#ffffff", command=lambda: ap.Admin_Process.users_button_handle(self))
 
         self.button_users.place(x=559, y=582, width=170, height=55)
+
+        self.window.resizable(False, False)

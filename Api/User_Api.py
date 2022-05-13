@@ -12,16 +12,19 @@ class User_Api(main_api.Api):
 
     # get last Invoice_Id from invoice collection
     def get_last_invoice_id(self):
-        self.cursor = self.invoices_collection.find().sort(
-            [('Invoice_Id', -1)])
-        self.last_invoice_id = self.cursor[0]['Invoice_Id']
-        return self.last_invoice_id
+        try: 
+            self.cursor = self.invoices_collection.find().sort(
+                [('Invoice_Id', -1)])
+            self.last_invoice_id = self.cursor[0]['Invoice_Id']
+            return self.last_invoice_id
+        except: 
+            return "INV-000"
 
     def create_new_invoice_id(self):
         self.last_invoice_id = self.get_last_invoice_id()
         id = self.last_invoice_id.split('-')[-1]
         new_id = float(id) + 1
-        self.new_invoice_id = 'INV-' + str(100+new_id).replace("1", "0", 1)
+        self.new_invoice_id = 'INV-' + str(100+int(new_id)).replace("1", "0", 1)
 
     def add_item_to_cart(self, product_name, quantity):
         data = self.warehouse_collection.find_one(
@@ -33,28 +36,29 @@ class User_Api(main_api.Api):
             product_name = data['Product_name']
             product_price = data['Price']
             left_stock = data['Stock']
-        try:
-            float(quantity)
-            if float(left_stock) < float(quantity):
-                return -2  # error 2: not enough stock
-            else:
-                left_stock = float(left_stock) - float(quantity)
-        except:
-            return -3  # error 3: error quantities
+        try: 
+            quantity = float(quantity)
+        except: 
+            return -3  # error 3: quantity is not a number
+        
+        if float(left_stock) < float(quantity):
+            return -2  # error 2: not enough stock
+        else:
+            left_stock = float(left_stock) - float(quantity)
         # check product_id is in User_Api.total_cart
         if len(User_Api.total_cart) != 0:
             for i in range(len(User_Api.total_cart)):
                 if User_Api.total_cart[i]['Product_id'] == product_id:
-                    User_Api.total_cart[i]['Quantity'] = float(
-                        User_Api.total_cart[i]['Quantity']) + float(quantity)
-                    User_Api.total_cart[i]['Price'] = float(
-                        User_Api.total_cart[i]['Price']) + float(quantity) * float(product_price)
-                    if float(left_stock) < User_Api.total_cart[i]['Quantity']:
-                        return -2  # error 2: not enough stock
+                    x =  float(User_Api.total_cart[i]['Quantity']) + float(quantity)
+                    if float(left_stock) < x:
+                        return -2  #error 2: not enough stock
+                        
                     else:
+                        User_Api.total_cart[i]['Quantity'] = x
+                        User_Api.total_cart[i]['Price'] = float(User_Api.total_cart[i]['Price']) + float(quantity) * float(product_price)
                         left_stock = float(left_stock) - float(quantity)
-                    User_Api.temp = User_Api.total_cart[i]['Price']
-                    return -4  # error 4: product already in cart
+                        User_Api.temp = User_Api.total_cart[i]['Price']
+                        return -4  # error 4: product already in cart
 
             self.cart = {}
             self.cart['Product_id'] = product_id

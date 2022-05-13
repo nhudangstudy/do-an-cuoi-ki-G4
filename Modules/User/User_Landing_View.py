@@ -50,3 +50,5 @@ class User_Landing_View:
         self.shopnow_button = Button(self.window, image=self.shopnow_image, borderwidth=0, highlightthickness=0,
                                      relief="flat", bg="#C6C5FB", command=lambda: up.User_Landing_process.shop_button_handle(self))
         self.shopnow_button.place(x=570, y=585, width=185, height=70)
+
+        self.window.resizable(0,0)

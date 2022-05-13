@@ -15,11 +15,13 @@ class User_Shop_process:
         obj.price.set(obj.price_entry.get())
         api = Api.User_Api()
         check = api.add_item_to_cart(
-            obj.search_entry.get(), obj.quantity.get())
+            obj.search_entry.get(), obj.quantity_entry_bframe.get())
         if check == -1:
             messagebox.showinfo("Error", "Product not found")
         elif check == -2:
             messagebox.showinfo("Error", "Quantity not available")
+            obj.search_entry.delete(0, END)
+            obj.quantity_entry_bframe.delete(0, END)
         elif check == -3:
             messagebox.showinfo("Error", "Error quantity")
         elif check == -4:
