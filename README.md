@@ -1,17 +1,17 @@
 # Sales-and-Inventory-Management-System
 
-#### Sales and Inventory Management System is a Tkinter (python module) based GUI application to generate sales invoices and maintence of inventory.
+#### Sales and Inventory Management System is a Tkinter (python module) based GUI application that generates sales, invoices and maintenance of the inventory.
 
-*	This application works on two levels of users, each category has different levels of rights to update the data & maintenance of masters like below.
+*	This application works on two levels of users, each category has different levels of rights to update the data & maintenance of masters like the information mentioned below.
 
 ##### For Admin (Owner)
 *	Add/Remove/Edit Products
 *	Track Inventory
-*	Check and review Sales data
-*	Check Accounts data
+*	Check and review Sales' data
+*	Check Accounts' data
 
 #### For Transactional Users
-*	Make Invoice
+*	Make Invoices
 *	Check Available Products
 
 # Requirements

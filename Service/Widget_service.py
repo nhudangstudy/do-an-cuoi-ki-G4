@@ -4,14 +4,15 @@ tkinter_umlauts = ['odiaeresis', 'adiaeresis', 'udiaeresis',
 
 
 class myentry(tkinter.Entry):
+
     def set_completion_list(self, completion_list):
-        self._completion_list = sorted(completion_list, key=str.lower)
+        self._completion_list = sorted(completion_list, key = str.lower)
         self._hits = []
         self._hit_index = 0
         self.position = 0
         self.bind('<KeyRelease>', self.handle_keyrelease)
 
-    def autocomplete(self, delta=0):
+    def autocomplete(self, delta = 0):
         if delta:
             self.delete(self.position, tkinter.END)
         else:
@@ -53,7 +54,7 @@ class myentry(tkinter.Entry):
 class mycombobox(tkinter.ttk.Combobox):
 
     def set_completion_list(self, completion_list):
-        self._completion_list = sorted(completion_list, key=str.lower)
+        self._completion_list = sorted(completion_list, key = str.lower)
         self._hits = []
         self._hit_index = 0
         self.position = 0

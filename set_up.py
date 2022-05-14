@@ -31,7 +31,7 @@ host = os.getenv("HOSTNAME")
 client = MongoClient(host)
 #check there was database named G4KTLT in client
 if "G4KTLT" in client.list_database_names():
-    print("Database already exists")
+    print("Database already existed")
     db = client['G4KTLT'] 
 else:
     #create database 
@@ -49,15 +49,15 @@ def import_user_data():
             db["users"].insert_one(element)
         else: 
             continue
-    print("Imported users data successfully")
+    print("Imported Users' data successfully")
 if "users" in db.list_collection_names(): 
-    print("Collection users already exists")
+    print("Collection Users already existed")
     #import data from ./Data/users.json
     import_user_data()
 
 else:
     collection = db.create_collection("users")
-    print("Collection users created")
+    print("Collection Users created")
     #import data from ./Data/users.json to collection
     import_user_data()
 
@@ -72,15 +72,15 @@ def import_warehouse_data():
             db["warehouse"].insert_one(element)
         else: 
             continue 
-    print("Imported warehouse data successfully")
+    print("Imported Warehouse's data successfully")
 
 if "warehouse" in db.list_collection_names():
-    print("Collection warehouse already exists")
+    print("Collection Warehouse already existed")
     #import data from ./Data/warehouse.json 
     import_warehouse_data()
 else: 
     collection = db.create_collection("warehouse")
-    print("Collection warehouse created")
+    print("Collection Warehouse created")
     #import data from ./Data/warehouse.json to collection
     import_warehouse_data()
 
@@ -96,18 +96,18 @@ def import_invoice_data():
             db["invoices"].insert_one(element)
         else:
             continue
-    print("Imported invoices data successfully")
+    print("Imported invoices' data successfully")
 
 
 if "invoices" in db.list_collection_names():
-    print("Collection invoices already exists")
+    print("Collection Invoices already existed")
     #import data from ./Data/invoices.json
     import_invoice_data()
 else:
     collection = db.create_collection("invoices")
-    print("Collection invoices created")
+    print("Collection Invoices created")
     #import data from ./Data/invoices.json to collection
     import_invoice_data()
 
 #notification on the screen for user downloaded successfully, donot use tkinter
-ctypes.windll.user32.MessageBoxW(0, "Setup successfully!!!!!, from G4 with love <3", "G4KTLT", 1)
+ctypes.windll.user32.MessageBoxW(0, "Setup successfully!!!!!\nFrom G4 with love <3", "G4KTLT", 1)
