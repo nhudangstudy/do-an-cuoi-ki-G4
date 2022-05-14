@@ -24,7 +24,7 @@ class User_Api(main_api.Api):
         self.last_invoice_id = self.get_last_invoice_id()
         id = self.last_invoice_id.split('-')[-1]
         new_id = float(id) + 1
-        self.new_invoice_id = 'INV-' + str(100+int(new_id)).replace("1", "0", 1)
+        self.new_invoice_id = 'INV-' + str(100 + int(new_id)).replace("1", "0", 1)
 
     def add_item_to_cart(self, product_name, quantity):
         data = self.warehouse_collection.find_one(

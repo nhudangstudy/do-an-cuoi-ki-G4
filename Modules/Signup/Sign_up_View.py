@@ -1,8 +1,8 @@
 import Modules.Signup.Sign_up_Process as signup_process
 from tkinter import *
 
-class Sign_up_View:
 
+class Sign_up_View:
     def __init__(self):
         self.window = Tk() 
 
@@ -26,7 +26,7 @@ class Sign_up_View:
         self.canvas.place(x = 0, y = 0)
 
         self.background_img = PhotoImage(file = f"./Images/SignUp/BG.png")
-        self.background = self.canvas.create_image(540, 360, image=self.background_img)
+        self.background = self.canvas.create_image(540, 360, image = self.background_img)
 
         self.username_entry = Entry(self.window, bd = 0, bg = "#9E94FF", highlightthickness = 0)
         self.username_entry.place(x = 335, y = 230, height = 33, width = 390)
@@ -34,7 +34,7 @@ class Sign_up_View:
         self.password_entry = Entry(self.window,show="*", bd = 0, bg = "#9E94FF", highlightthickness = 0)
         self.password_entry.place(x = 335, y = 330, height = 33, width = 390)
 
-        self.reenterpass_entry = Entry(self.window,show="*", bd = 0, bg = "#9E94FF", highlightthickness = 0)
+        self.reenterpass_entry = Entry(self.window,show = "*", bd = 0, bg = "#9E94FF", highlightthickness = 0)
         self.reenterpass_entry.place(x = 335, y = 430, height = 33, width = 390)
 
         self.signup_image = PhotoImage(file = f"./Images/SignUp/Button_Signup.png")
@@ -50,4 +50,4 @@ class Sign_up_View:
         self.entry_bg2 = self.canvas.create_image(535, 350, image = self.entry_image)
         self.entry_bg3 = self.canvas.create_image(535, 250, image = self.entry_image)
 
-        self.window.resizable(0,0)
+        self.window.resizable(0, 0)

@@ -6,6 +6,7 @@ import Modules.Login.Login_View as lgv
 
 
 class User_Landing_process:
+    
     @staticmethod
     def log_out_button_handle(obj):
         obj.window.destroy()

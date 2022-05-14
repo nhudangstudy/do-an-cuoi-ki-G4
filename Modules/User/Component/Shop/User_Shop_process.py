@@ -7,10 +7,11 @@ import datetime
 
 
 class User_Shop_process:
+
     @staticmethod
     def add_to_cart(obj):
-        # add to cart
 
+        # add to cart
         obj.quantity.set(obj.quantity_entry.get())
         obj.price.set(obj.price_entry.get())
         api = Api.User_Api()
@@ -32,7 +33,7 @@ class User_Shop_process:
             messagebox.showinfo("Success", "Item updated")
         else:
             # add check to treeview
-            obj.tree.insert("", "end", values=(
+            obj.tree.insert("", "end", values = (
                 check['Product_id'], check['Product_name'], check['Quantity'], check['Price']))
             obj.product_id.set(check["Product_id"])
             obj.product_name.set(check["Product_name"])
@@ -110,4 +111,5 @@ class User_Shop_process:
             obj.tree.delete(item) 
         data = api.total_cart 
         for item in data:
-            obj.tree.insert("", END, values=(item["Product_id"], item["Product_name"], item["Quantity"], item["Price"]))
+            obj.tree.insert("", END, values = (item["Product_id"], item["Product_name"], item["Quantity"], item["Price"]))
+            

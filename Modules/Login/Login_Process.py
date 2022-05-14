@@ -7,6 +7,7 @@ import Modules.User.User_Landing_View as uv
 
 
 class Login_Process:
+    
     @staticmethod
     def confirm_button_handle(obj):
         username = obj.name_entry.get()

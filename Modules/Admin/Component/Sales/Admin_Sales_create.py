@@ -3,7 +3,10 @@ import Service.Widget_service as ws
 import Api.Admin_Api as Api
 from tkinter import ttk 
 import Modules.Admin.Component.Sales.Admin_Sales_process as asp
+
+
 class Admin_Sales_create: 
+
     @staticmethod 
     def generate_sales(obj): 
         # clear all frames 
@@ -46,9 +49,9 @@ class Admin_Sales_create:
         #create visualize button 
         obj.visualizebutton = Button(obj.searchframe, text="Visualize", font=("Montserrat", 10, "bold"), bg='#CCCCFE', command= lambda: asp.Admin_Sales_Process.visualize_button_handle(obj))
         obj.visualizebutton.place(x=400, y=0, width=100, height=50) 
+
     @staticmethod 
     def generate_treeview(obj): 
-        
         api = Api.Admin_Api() 
         #create a tree view 
         obj.tree = ttk.Treeview(obj.tableframe, columns=("Invoice_Id", "InvoiceDate", "Product_id", "Product_name", "Quantity", "Price"), height=10)

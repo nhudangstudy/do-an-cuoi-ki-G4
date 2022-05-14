@@ -4,6 +4,7 @@ import Modules.Admin.Component.Admin_Main_View as amv
 
 
 class Admin_Process:
+    
     @staticmethod
     def log_out_button_handle(obj):
         obj.window.destroy()
