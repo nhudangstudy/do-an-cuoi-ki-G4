@@ -4,6 +4,7 @@ from dotenv import load_dotenv, find_dotenv
 
 
 class Api:
+    
     def __init__(self):
         self.connector()
 

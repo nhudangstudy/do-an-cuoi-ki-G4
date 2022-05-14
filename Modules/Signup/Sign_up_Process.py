@@ -3,6 +3,7 @@ import Api.Signup_Api as Signup_Api
 import Modules.Login.Login_View as loginview
 from tkinter import END, messagebox as mbox
 
+
 class Sign_up_Process: 
     
     @staticmethod
@@ -36,6 +37,7 @@ class Sign_up_Process:
             obj.username_entry.delete(0,END)
             obj.password_entry.delete(0,END)
             obj.reenterpass_entry.delete(0,END)
+            
         else:
             mbox.showinfo('Success','Account created successfully')
             obj.username_entry.delete(0,END)

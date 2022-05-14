@@ -5,6 +5,7 @@ import Api.Admin_Api as admin_api
 
 
 class Admin_Products_Process:
+    
     @staticmethod
     def add_item_button_handle(obj):
         api = admin_api.Admin_Api()
@@ -23,11 +24,11 @@ class Admin_Products_Process:
                          "Price": float(f"{price}"), "Stock": int(f"{stock}")}
             check = api.add_new_item(json_data)
             if check == -1:
-                messagebox.showinfo("Error", "Product id is not in collection but all informations are in collection")
+                messagebox.showinfo("Error", "Product id is not in collection but all information is in collection")
             elif check == 0:
                 messagebox.showinfo("Success", "Inserted Succesfully")
             else:
-                messagebox.showinfo("Error", "Product is already exist")
+                messagebox.showinfo("Error", "Product already existed")
 
     @staticmethod
     def reset_button_handle(obj):
@@ -39,3 +40,4 @@ class Admin_Products_Process:
         obj.category_entry.delete(0, END)
         obj.price_entry.delete(0, END)
         obj.stock_entry.delete(0, END)
+        

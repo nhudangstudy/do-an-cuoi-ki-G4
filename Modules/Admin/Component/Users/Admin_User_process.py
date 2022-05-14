@@ -2,6 +2,7 @@ from tkinter import *
 import tkinter.messagebox as mbox
 import Api.Admin_Api as AdminApi
 
+
 class Admin_User_Process: 
 
     @staticmethod
@@ -41,7 +42,7 @@ class Admin_User_Process:
                 obj.tree.delete(item)
             users = api.get_all_users_data() 
             for user in users: 
-                obj.tree.insert('', 'end', values=(user['username'], user['password'], user['roles']))
+                obj.tree.insert('', 'end', values = (user['username'], user['password'], user['roles']))
             mbox.showinfo("Success", "Updated Successfully")
 
     @staticmethod

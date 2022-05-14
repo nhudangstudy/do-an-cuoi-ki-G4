@@ -5,7 +5,9 @@ import Modules.Admin.Component.Inventory.Admin_Inventory_create as aic
 import Api.Main_Api as MainApi 
 import tkinter.messagebox as mbox
 
+
 class Admin_Inventory_Process:
+
     @staticmethod
     def get_json_data(obj):
         product_name = obj.product_name_entry.get()
@@ -37,24 +39,22 @@ class Admin_Inventory_Process:
             api = AdminApi.Admin_Api()
             check = api.update_items(data, product_id)
             if check == -2:
-                mbox.showerror('Error','product id is not in collection but all informations are in collection')
+                mbox.showerror('Error','Product id is not in collection but all information is in collection')
             else:
                 for item in obj.tree.get_children():
                     obj.tree.delete(item)
                 table_data = api.get_all_warehouse_data()
                 for row in table_data: 
-                    obj.tree.insert('', 'end', values=(row['Product_id'], row['Product_name'], row['Description'], row['Category'], row['Price'], row['Stock']))
+                    obj.tree.insert('', 'end', values = (row['Product_id'], row['Product_name'], row['Description'], row['Category'], row['Price'], row['Stock']))
                 mbox.showinfo('Success','Updated Succesfully')
-                obj.current_stock_entry.config(state=NORMAL)
+                obj.current_stock_entry.config(state = NORMAL)
                 obj.product_name_entry.delete(0, END)
                 obj.description_entry.delete(0, END)
                 obj.category_entry.delete(0, END)
                 obj.price_entry.delete(0, END)
                 obj.current_stock_entry.delete(0, END)
                 obj.add_stock_entry.delete(0, END)
-                obj.current_stock_entry.config(state=DISABLED)
-
-                
+                obj.current_stock_entry.config(state = DISABLED)
 
     @staticmethod
     def remove_button_handle(obj):
@@ -62,19 +62,18 @@ class Admin_Inventory_Process:
         #get the product id selected in treeview 
         product_id = obj.tree.item(obj.tree.selection())['values'][0] 
         check = api.remove_items(product_id) 
-        mbox.showinfo('Success','Remove successful')
+        mbox.showinfo('Success','Removed successfully')
         for item in obj.tree.get_children(): 
             obj.tree.delete(item) 
         table_data = api.get_all_warehouse_data() 
         for row in table_data: 
-            obj.tree.insert('', 'end', values=(row['Product_id'], row['Product_name'], row['Description'], row['Category'], row['Price'], row['Stock'])) 
+            obj.tree.insert('', 'end', values = (row['Product_id'], row['Product_name'], row['Description'], row['Category'], row['Price'], row['Stock'])) 
         obj.product_name_entry.delete(0, END) 
         obj.description_entry.delete(0, END) 
         obj.category_entry.delete(0, END) 
         obj.price_entry.delete(0, END) 
         obj.current_stock_entry.delete(0, END) 
         obj.add_stock_entry.delete(0, END)
-
 
     @staticmethod
     def reset(obj):
@@ -96,7 +95,7 @@ class Admin_Inventory_Process:
                 obj.tree.delete(item) 
             data  = api.warehouse_collection.find({'Product_name': {'$regex': f'{search_term}', '$options': 'i'}})
             for row in data: 
-                obj.tree.insert('', 'end', values=(row['Product_id'], row['Product_name'], row['Description'], row['Category'], row['Price'], row['Stock']))
+                obj.tree.insert('', 'end', values = (row['Product_id'], row['Product_name'], row['Description'], row['Category'], row['Price'], row['Stock']))
 
     @staticmethod 
     def reset_button_handle(obj): 
@@ -105,8 +104,8 @@ class Admin_Inventory_Process:
             obj.tree.delete(item) 
         table_data = api.get_all_warehouse_data()
         for row in table_data: 
-            obj.tree.insert('', 'end', values=(row['Product_id'], row['Product_name'], row['Description'], row['Category'], row['Price'], row['Stock']))
-        obj.current_stock_entry.config(state=NORMAL)
+            obj.tree.insert('', 'end', values = (row['Product_id'], row['Product_name'], row['Description'], row['Category'], row['Price'], row['Stock']))
+        obj.current_stock_entry.config(state = NORMAL)
         obj.search_entry.delete(0,END)
         obj.product_name_entry.delete(0,END) 
         obj.description_entry.delete(0,END) 
@@ -114,5 +113,5 @@ class Admin_Inventory_Process:
         obj.price_entry.delete(0,END)
         obj.current_stock_entry.delete(0,END)
         obj.add_stock_entry.delete(0,END)
-        obj.current_stock_entry.config(state=DISABLED)
-
+        obj.current_stock_entry.config(state = DISABLED)
+        
