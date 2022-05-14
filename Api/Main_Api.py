@@ -64,4 +64,5 @@ class Api:
         for item in warehouse: 
             if int(item["Product_id"][1:]) > last_prod_id: 
                 last_prod_id = int(item["Product_id"][1:]) 
-        return str(1000+last_prod_id+1).replace("1", "P", 1)
+        return str(1000 + last_prod_id + 1).replace("1", "P", 1)
+

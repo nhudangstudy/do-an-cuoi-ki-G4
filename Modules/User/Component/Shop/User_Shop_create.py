@@ -65,7 +65,7 @@ class User_Shop_create:
             obj.tableframe, orient = VERTICAL, command = obj.tree.yview)
         obj.scrollbary.grid(row = 1, column = 7, sticky = (N, S, W, E))
         obj.scrollbarx = Scrollbar(
-            obj.tableframe, orient=HORIZONTAL, command = obj.tree.xview)
+            obj.tableframe, orient = HORIZONTAL, command = obj.tree.xview)
         obj.scrollbarx.grid(row = 2, column = 0, columnspan = 7, sticky = (N, S, W, E))
         obj.tree.configure(yscrollcommand = obj.scrollbary.set,
                            xscrollcommand = obj.scrollbarx.set)

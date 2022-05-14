@@ -11,7 +11,7 @@ class User_Items_process:
         data = api.get_all_warehouse_data()
         # create a tree view in tableframe
         tree = ttk.Treeview(obj.tableframe, columns=(
-            "Product_id", "Product_name", "Description", "Category", "Price", "Stock"), height=20)
+            "Product_id", "Product_name", "Description", "Category", "Price", "Stock"), height = 20)
         tree.heading("#0")
         tree.heading("#1", text = "Product_id")
         tree.heading("#2", text = "Product_name")

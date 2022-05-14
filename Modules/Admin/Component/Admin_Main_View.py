@@ -8,6 +8,7 @@ import Modules.Login.Login_View as lgv
 
 
 class Admin_Main_View:
+
     def __init__(self):
 
         self.window = Tk()
@@ -107,3 +108,4 @@ class Admin_Main_View:
             app.window.mainloop() 
         else:
             return 
+            
