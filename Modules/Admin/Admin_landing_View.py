@@ -42,7 +42,7 @@ class Admin_View:
 
         # -----button-products-----
         self.img_products = PhotoImage(file = f"./Images/Admin/LandingPage/Button_Products.png")
-        self.button_products = Button(image=self.img_products, borderwidth = 0,
+        self.button_products = Button(image = self.img_products, borderwidth = 0,
                                       highlightthickness = 0, relief = "flat", bg = "#ffffff", activebackground = "#ffffff",
                                       command = lambda: ap.Admin_Process.products_button_handle(self))
 

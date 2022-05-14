@@ -52,7 +52,6 @@ class User_Api(main_api.Api):
                     x =  float(User_Api.total_cart[i]['Quantity']) + float(quantity)
                     if float(left_stock) < x:
                         return -2  #error 2: not enough stock
-                        
                     else:
                         User_Api.total_cart[i]['Quantity'] = x
                         User_Api.total_cart[i]['Price'] = float(User_Api.total_cart[i]['Price']) + float(quantity) * float(product_price)

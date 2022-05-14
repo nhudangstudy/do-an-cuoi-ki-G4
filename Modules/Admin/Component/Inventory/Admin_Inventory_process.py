@@ -77,12 +77,12 @@ class Admin_Inventory_Process:
 
     @staticmethod
     def reset(obj):
-        obj.product_name_entry.delete(0,END)
-        obj.description_entry.delete(0,END)
-        obj.category_entry.delete(0,END)
-        obj.price_entry.delete(0,END)
-        obj.current_stock_entry.delete(0,END)
-        obj.add_stock_entry.delete(0,END)
+        obj.product_name_entry.delete(0, END)
+        obj.description_entry.delete(0, END)
+        obj.category_entry.delete(0, END)
+        obj.price_entry.delete(0, END)
+        obj.current_stock_entry.delete(0, END)
+        obj.add_stock_entry.delete(0, END)
 
     @staticmethod 
     def search_button_handle(obj): 
@@ -106,12 +106,12 @@ class Admin_Inventory_Process:
         for row in table_data: 
             obj.tree.insert('', 'end', values = (row['Product_id'], row['Product_name'], row['Description'], row['Category'], row['Price'], row['Stock']))
         obj.current_stock_entry.config(state = NORMAL)
-        obj.search_entry.delete(0,END)
-        obj.product_name_entry.delete(0,END) 
-        obj.description_entry.delete(0,END) 
-        obj.category_entry.delete(0,END)
-        obj.price_entry.delete(0,END)
-        obj.current_stock_entry.delete(0,END)
-        obj.add_stock_entry.delete(0,END)
+        obj.search_entry.delete(0, END)
+        obj.product_name_entry.delete(0, END) 
+        obj.description_entry.delete(0, END) 
+        obj.category_entry.delete(0, END)
+        obj.price_entry.delete(0, END)
+        obj.current_stock_entry.delete(0, END)
+        obj.add_stock_entry.delete(0, END)
         obj.current_stock_entry.config(state = DISABLED)
         
