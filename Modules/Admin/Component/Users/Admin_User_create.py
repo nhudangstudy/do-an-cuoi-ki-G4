@@ -107,22 +107,28 @@ class Admin_User_create:
         window.title("Create new user") 
         window.geometry("500x500") 
         window.resizable(False, False) 
-        window.configure(background = "'#fccde0") 
+        window.configure(background = "#fccde0") 
+
         # create label 
         label_username = Label(window, text = "Username", bg = '#fccde0') 
         label_username.place(x = 0, y = 0, width = 100, height = 50) 
+
         # create entry 
         entry_username = Entry(window) 
         entry_username.place(x = 100, y = 0, width = 200, height = 50) 
+
         # create label 
         label_password = Label(window, text = "Password", bg = '#fccde0')  
         label_password.place(x = 0, y = 70, width = 100, height = 50) 
+
         # create entry
         entry_password = Entry(window) 
         entry_password.place(x = 100, y = 70, width = 200, height = 50) 
+
         # create label
         label_role = Label(window, text = "Role", bg = '#fccde0')
         label_role.place(x = 0, y = 140, width = 100, height = 50)
+
         # create entry
         entry_role = ws.mycombobox(window)
         entry_role.set_completion_list(["Admin", "User"])
@@ -131,6 +137,7 @@ class Admin_User_create:
         # create create button 
         button_create = Button(window, text = "Create",command = lambda: add_new_user(entry_username, entry_password, entry_role))
         button_create.place(x = 100, y = 200, width = 100, height = 50) 
+        
         #exit button 
         button_exit = Button(window, text = "Exit", command = window.destroy) 
         button_exit.place(x = 200, y = 200, width = 100, height = 50) 

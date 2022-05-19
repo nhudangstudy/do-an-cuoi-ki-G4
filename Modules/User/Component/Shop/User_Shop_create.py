@@ -13,6 +13,7 @@ class User_Shop_create:
         for frame in obj.allframes:
             frame.place_forget()
         obj.allframes = []
+
         # create new frames
         obj.tableframe = Frame(obj.window, bg = "#fccde0")
         obj.tableframe.place(x = 50, y = 250, width = 980, height = 200)
@@ -26,6 +27,7 @@ class User_Shop_create:
         obj.allframes.append(obj.tableframe)
         obj.allframes.append(obj.formframe)
         obj.allframes.append(obj.buttonframe)
+
         User_Shop_create.generate_shop_table(obj)
         User_Shop_create.generate_shop_form(obj)
         User_Shop_create.generate_shop_buttons(obj)
@@ -74,6 +76,7 @@ class User_Shop_create:
 
     @staticmethod
     def generate_shop_form(obj):
+        
         # create form in form frame
         obj.product_id = StringVar()
         obj.product_name = StringVar()
