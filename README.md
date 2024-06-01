@@ -16,7 +16,7 @@
 
 # Requirements
 ```
-Operating System -: Windows
+Operating System: Windows
 python -v3
 ```
 
